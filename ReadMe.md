@@ -113,4 +113,4 @@ TBD..:
     2.   
     3.   
 
-Please feel free to fork and even collaborate with me on this awesome [repository](https://github.com/supercodingninja/Portfolio).  Thank you for viewing! - Frederick Thomas, Super Coding Ninja™ [2014-Present](https://supercodingninja.github.io/) All Rights Reserved
+Please feel free to fork and even collaborate with me on this awesome [repository](https://github.com/supercodingninja/CodeQuiz ).  Thank you for viewing! - Frederick Thomas, Super Coding Ninja™ [2014-Present](https://supercodingninja.github.io/) All Rights Reserved

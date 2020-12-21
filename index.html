@@ -23,6 +23,7 @@
         </header>
 
         <main class="quizContainer">
+            <!-- Quiz instructions. -->
             <section id="instruct" class="intro">
                 <h2 id="title" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; background-size: contain; background-position: center;">Do You Know 'Fred?'</h2>
                 
@@ -32,8 +33,10 @@
             </section>
 
             <section id="quiz" class="outOfSight">
+                <!-- My various questions should append here. -->
                 <h3 id="Q"></h3>
 
+                <!-- Choices for user's answers. -->
                 <div id="choiceSection">
                     <button class='choices' id='choice1' data-number='1'></button>
                     <button class='choices' id='choice2' data-number='2'></button>
@@ -46,6 +49,19 @@
                     <button class='choices' id='choice9' data-number='9'></button>
                     <button class='choices' id='choice10' data-number='10'></button>
                 </div>
+            </section>
+
+            <!-- Evaluation of user's answer. -->
+            <section class='outOfSight' id="Verdict">
+                <p class='outOfSight' id="correct">Correct!</p>
+                <p class='outOfSight' id="incorrect">What?! That is so, not Me!</p>
+            </section>
+
+            <!-- End of quiz/Out of time -->
+            <section id='endQuiz' class='outOfSight'>
+                <input type='text' id='sign' placeholder='Own it!  Put your the initials to your `John Hancock,` here (first letter of First name and Last name.)'>
+                <button class='ownIt' id="submitBtn">Quiz Score</button>
+                <button class='redo' id="retakeBtn">Shh! Redo...</button>
             </section>
         </main>
       

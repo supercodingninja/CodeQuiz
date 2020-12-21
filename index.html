@@ -6,11 +6,11 @@
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dynalight&display=swap" rel="stylesheet">
         <!-- My Awesome, Cool, and Stylish Favicon -->
         <link rel="shortcut icon" type="image/png" href="Assets/Media/apple-touch-icon.png">
         <!-- My CSS Hardcode -->
-        <link rel="stylesheet" type="text/css" href="Assets/CSS/home.css">
+        <link rel="stylesheet" type="text/css" href="Assets/CSS/cq.css">
 
         <!-- Browser Tab Title -->
         <title>Do You Know 'Fred?'</title>
@@ -19,16 +19,22 @@
     <body style="background-image: url(Assets/Media/seattle-background-640x415.jpg);  background-repeat: no-repeat; background-size: cover;">
 
         <header>
-            <div>
-              <h1 id="titleDiv" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; background-size: contain; background-position: center;">Do You Know 'Fred?'</h1>
-            </div>
+            <h1>Somewhere in Seattle, is a guy named, 'Fred'...</h1>
         </header>
 
-        
-        <section id="instruct">
-            <p>TBD...</p> <!-- I may need to add an <ul> --> <!-- May add some phrases, to make it more fun. -->
-        </section>
+        <main class="quizContainer">
+            <section id="instruct" class="intro">
+                <h2 id="title" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; background-size: contain; background-position: center;">Do You Know 'Fred?'</h2>
+                
+                <p>How well do you know him?  Test your luck, with speed and accuracy:<br>Your time left and the amount of answers correct, all determine your score.<br>Any incorrect answer takes away time.</p>
 
+                <button class="knock">Knock-knock</button>
+            </section>
+
+            <section class="quiz">
+                ...
+            </section>
+        </main>
       
         <!-- jQuery Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

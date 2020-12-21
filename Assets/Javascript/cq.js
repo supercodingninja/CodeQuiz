@@ -6,7 +6,7 @@ const questions = [{
     choice2: "`Fred` thinks all band members are geeks."
     choice3: "`Fred` doesn't play `an` instrument."
 
-    A: choice3
+    A: 3,
 },{
     Q: "How many instruments can `Fred` play?"
 
@@ -14,7 +14,7 @@ const questions = [{
     choice2: "Piano, guitar, drums."
     choice3: "Anything he puts his mind to."
 
-    A: choice3
+    A: 3,
 },{
     Q: "How many times has `Fred` been married?"
 
@@ -24,7 +24,7 @@ const questions = [{
     choice4: "`Fred` has been married twice: his first wife was deported by higher command's orders, while serving in the Marines."
     choice5: "`Fred` has only been married once, and plans to stay that way (one and done)!"
 
-    A: choice5
+    A: 5,
 },{
     Q: "How does `Fred` prefer to be addressed?"
 
@@ -34,7 +34,7 @@ const questions = [{
     choice4: "`Fred` doesn't care, that's why he's a great guy!"
     choice5: "Frederick"
 
-    A: choice5
+    A: 5,
 },{
     Q: "What is the nickname for `Fred`?"
 
@@ -42,7 +42,7 @@ const questions = [{
     choice2: "derF"
     choice3: "Freddy"
 
-    A: choice1
+    A: 1,
 },{
     Q: "What is `Frederick's` favorite nickname?"
 
@@ -50,7 +50,7 @@ const questions = [{
     choice2: "Turbo"
     choice3: "Motto"
 
-    A: choice2
+    A: 2,
 },{
     Q: "What is `Frederick's` religion?"
 
@@ -58,7 +58,7 @@ const questions = [{
     choice2: "`Fred` believes in Christianity, Judaism, and Muslim (all from father Abraham)."
     choice3: "`Frederick's` Faith is Christianity."
 
-    A: choice3
+    A: 3,
 },{
     Q: "`Fred's` favorite show ___."
 
@@ -73,7 +73,7 @@ const questions = [{
     choice9: "is Mighty Morphing Power Rangers"
     choice10: "is Star Wars"
 
-    A: choice3
+    A: 3,
 },{
     Q: "What is `Fred's` favorite show?"
 
@@ -81,7 +81,7 @@ const questions = [{
     choice2: "Star Wars: The Clone Wars"
     choice3: "Game of Horns"
 
-    A: choice2
+    A: 2,
 },{
     Q: "How old is `Fred`?"
 
@@ -93,7 +93,7 @@ const questions = [{
     choice6: "37"
     choice7: "4 the last time, non3 of your business!"
 
-    A: choice3
+    A: 3,
 },{
     Q: "`Fred` likes to ___."
 
@@ -101,7 +101,7 @@ const questions = [{
     choice2: "Surf"
     choice3: "Climb Mountains"
 
-    A: choice2
+    A: 2,
 },{
     Q: "`Fred` likes to ___."
 
@@ -109,20 +109,20 @@ const questions = [{
     choice2: "Fish"
     choice3: "Run"
 
-    A: choice1
+    A: 1,
 },{
     Q: "`Fred` was engaged three times."
 
     choice1: "True"
     choice2: "False"
 
-    A: choice1
+    A: 1,
 },{
     Q: "`Fred` likes to wear Captain America and Iron Man shirts, while working out."
 
     choice1: "True"
     choice2: "False"
 
-    A: choice2
+    A: 2,
 },]
 

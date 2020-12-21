@@ -1,3 +1,24 @@
-body {
-    
-}
+
+  
+  body {
+    background-image: url(Assets/Media/seattle-background-640x415.jpg);
+    min-width: 1250px;
+  }
+
+  header div {
+    float: right;
+    position: relative;
+    top: 25px;
+    left: 25px;
+    margin-right: 165px;
+    margin-top: 350px;
+  }
+  
+  header h1 {
+    font-family: Cursive;
+    text-align: center;
+    font-size: 5em;
+    color: rgb(221, 221, 221);
+    margin-bottom: 22px;
+    text-shadow: -1px 1px 0 #000;
+  }

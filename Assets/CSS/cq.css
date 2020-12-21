@@ -1,44 +1,40 @@
-
-  
-  body {
+body {
     background-image: url(Assets/Media/seattle-background-640x415.jpg);
     min-width: 1250px;
   }
 
-  h1 {
-    /* Reference https://www.midwinter-dg.com/permalink-7-great-css-based-text-effects-using-the-text-shadow-property_2011-03-03.html */
-    text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0);
-    font: 65px 'ChunkFiveRegular';
-    float: right;
-    /* color: whitesmoke;
-    font-family: 'Dynalight', cursive; */
-  }
+h1 {
+  /* Reference https://www.midwinter-dg.com/permalink-7-great-css-based-text-effects-using-the-text-shadow-property_2011-03-03.html */
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0);
+  font: 65px 'ChunkFiveRegular';
+  float: right;
+  /* color: whitesmoke;
+  font-family: 'Dynalight', cursive; */
+}
 
-  .intro {
-    text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0);
-    font: 'ChunkFiveRegular';
-    float: right;
-    margin-right: 22px;
-  }
+.intro {
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0);
+  font: 'ChunkFiveRegular';
+  float: right;
+  margin-right: 22px;
+}
 
-  #instruct {
-    top: 25px;
-    left: 25px;
-    margin-top: 135px;
-    text-align: center;
-    color:rgb(221, 221, 221);
-    font-size: 1em;
-  }
+#instruct {
+  top: 25px;
+  left: 25px;
+  margin-top: 135px;
+  text-align: center;
+  color:rgb(221, 221, 221);
+  font-size: 1em;
+}
 
-
-  
-  #title {
-    font-family: Cursive;
-    text-align: center;
-    font-size: 5em;
-    color: rgb(221, 221, 221);
-    margin-bottom: 22px;
-    text-shadow: -1px 1px 0 #000;
-  }
+#title {
+  font-family: Cursive;
+  text-align: center;
+  font-size: 5em;
+  color: rgb(221, 221, 221);
+  margin-bottom: 22px;
+  text-shadow: -1px 1px 0 #000;
+}

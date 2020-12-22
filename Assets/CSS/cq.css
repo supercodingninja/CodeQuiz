@@ -41,9 +41,11 @@ h1 {
   text-shadow: -2px 2.3px 0 #000;
 }
 
-.outOfSight {
+/* Now, you see me- now, you don't! */
+/* Decided to use .attr "style: display: block !important;"  Ref. https://forum.jquery.com/topic/show-elements-with-style-display-none-important-jquery-bug */
+/* .outOfSight {
   display: none !important;
-}
+} */
 
 /* Quiz Container Styles. */
 #quizTime {
@@ -62,6 +64,21 @@ h1 {
 #goToScoreboard:hover {
   background-color: #408c99;
   background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+}
+
+#beat {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+#gameOverScreen {
+  display: flex;
+  justify-content: center;
+}
+
+.submitScreen {
+  margin: 5px;
 }
 
 /* Button Styles */
@@ -202,7 +219,7 @@ h1 {
 	background-color: #3847f0;
 }
 
-/* Scoring */
+/* Scoring Displays */
 #chapsScores {
   list-style-type: none;
 }

@@ -72,12 +72,14 @@ h1 {
   display: flex;
 }
 
-#gameOverScreen {
+#endQuiz {
   display: flex;
+  max-width: 100%;
   justify-content: center;
+  align-items: center;
 }
 
-.submitScreen {
+.ownIt {
   margin: 5px;
 }
 
@@ -222,13 +224,6 @@ h1 {
 /* Scoring Displays */
 #chapsScores {
   list-style-type: none;
-}
-
-#endQuiz {
-  display: flex;
-  max-width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 #correct {

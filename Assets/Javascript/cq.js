@@ -1,3 +1,14 @@
+// Note to self: for this repository, try to stick to Vanilla Javascript so that things become clearer (a lot of moving parts):
+// Define global var
+// Function var
+// Call function
+// Event listeners
+// This will make it easier to get assistance on any area(s) with issues. //
+
+// Intro. //
+const introBtnEl = document.getElementById('knock');
+const instructEl = document.getElementById('instruct');
+
 // Q & A //
 const questions = [{
     Q: "What instrument does `'Fred'` play?"
@@ -126,3 +137,33 @@ const questions = [{
     A: 2,
 },]
 
+const QEl = document.getElementById('Q');
+const quizEl = document.getElementById('quiz');
+
+const choices = Array.from(document.querySelectorAll('.choices'));
+
+const correctEl = document.getElementById('correct');
+const incorrectEl = document.getElementById('incorrect');
+const VerdictEl = document.getElementById('Verdict');
+
+let randomIndex;
+let randomQ;
+let qAsked;
+
+const goToScoreboardEl = document.getElementById('goToScoreboard');
+
+// Scoring and End of Quiz //
+const chapsScoresEl = document.querySelector('#chapsScores');
+const chaplistEl = document.querySelector('#chaplist');
+const scoreContainerEl = document.querySelector('#scoreContainer');
+const signEl = document.querySelector('#sign');
+const topEl = document.querySelector('#top');
+const endQuizEl = document.getElementById('endQuiz');
+const totalEl = document.getElementById('total');
+const redoBtnEl = document.getElementById('redoBtn');
+
+let chapsIndex = 0;
+let chapsScoreIndex = 0;
+
+// Having trouble with this part.  I want to store a list of the highest scores. //
+let localUsers = [];

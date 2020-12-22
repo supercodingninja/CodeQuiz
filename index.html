@@ -29,7 +29,7 @@
             <section id="instruct" class="intro">
                 <h2 id="title" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; background-size: contain; background-position: center;">Do You Know 'Fred?'</h2>
                 
-                <p>How well do you know him?  Test your luck, with speed and accuracy:<br>Your time left and the amount of answers correct, all determine your score.<br>Any incorrect answer takes away time.</p>
+                <p>How well do you know him?  Test your luck, with speed and accuracy:<br> Your time left & the amount of answers correct, all determine your score.<br> Choose the Best option, available. Any incorrect answer takes away time.</p>
 
                 <button class="knock">Knock-knock</button>
             </section>
@@ -40,16 +40,16 @@
 
                 <!-- Choices for user's answers. -->
                 <div id="choiceSection">
-                    <button class='choices' id='choice1' data-number='1'></button>
-                    <button class='choices' id='choice2' data-number='2'></button>
-                    <button class='choices' id='choice3' data-number='3'></button>
-                    <button class='choices' id='choice4' data-number='4'></button>
-                    <button class='choices' id='choice5' data-number='5'></button>
-                    <button class='choices' id='choice6' data-number='6'></button>
-                    <button class='choices' id='choice7' data-number='7'></button>
-                    <button class='choices' id='choice8' data-number='8'></button>
-                    <button class='choices' id='choice9' data-number='9'></button>
-                    <button class='choices' id='choice10' data-number='10'></button>
+                    <button class="choices" id="choice1" data-number="1"></button>
+                    <button class="choices" id="choice2" data-number="2"></button>
+                    <button class="choices" id="choice3" data-number="3"></button>
+                    <button class="choices" id="choice4" data-number="4"></button>
+                    <button class="choices" id="choice5" data-number="5"></button>
+                    <button class="choices" id="choice6" data-number="6"></button>
+                    <button class="choices" id="choice7" data-number="7"></button>
+                    <button class="choices" id="choice8" data-number="8"></button>
+                    <button class="choices" id="choice9" data-number="9"></button>
+                    <button class="choices" id="choice10" data-number="10"></button>
                 </div>
 
                 <header>
@@ -62,16 +62,16 @@
             </section>
 
             <!-- Evaluation of user's answer. -->
-            <section class='outOfSight' id="Verdict">
-                <p class='outOfSight' id="correct">Correct!</p>
-                <p class='outOfSight' id="incorrect">What?! That is so, not Me!</p>
+            <section id="Verdict" class="outOfSight">
+                <p id="correct" class="outOfSight">Correct!</p>
+                <p id="incorrect" class="outOfSight">What?! That is so, not Me!</p>
             </section>
 
             <!-- End of quiz/Out of time -->
             <section id="endQuiz" class="outOfSight">
                 <input type="text" id="sign" placeholder="Own it!  Put your the initials to your `John Hancock,` here (first letter of First name and Last name.)">
-                <button class="ownIt" id="submitBtn">Quiz Score</button>
-                <button class="redo" id="retakeBtn">Shh! Redo...</button>
+                <button id="total" class="ownIt">Quiz Score</button>
+                <button id="redoBtn" class="ownIt">Shh! Redo...</button>
             </section>
 
             <!-- Quiz Score/Total Evaluation -->
@@ -80,11 +80,11 @@
                 <div id="scoreboard">
                     <div id="winner">
                         <h4>Chaps</h4>
-                        <ol id="usernames"></ol>
+                        <ol id="chaplist"></ol>
                     </div>
                     <div id="highScores">
                         <h2>High Scores</h2>
-                        <ol id="scores"></ol>
+                        <ol id="chapScores"></ol>
                     </div>
                 </div>
 

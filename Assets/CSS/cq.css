@@ -18,10 +18,10 @@ h1 {
 #instruct {
   top: 25px;
   left: 25px;
-  margin-top: 258px;
+  margin-top: 320px;
   margin-right: 97px;
   text-align: center;
-  color:rgb(221, 221, 221);
+  color: rgb(221, 221, 221);
   font-size: 1em;
 }
 
@@ -35,10 +35,10 @@ h1 {
 #title {
   font-family: Cursive;
   text-align: center;
-  font-size: 5em;
-  color: rgb(221, 221, 221);
+  font-size: 2.5em;
+  color: #ccc2a6;
   margin-bottom: 22px;
-  text-shadow: -1px 1px 0 #000;
+  text-shadow: -2px 2.3px 0 #000;
 }
 
 .outOfSight {
@@ -174,3 +174,4 @@ h1 {
   position: relative;
 	top: 1px;
 }
+

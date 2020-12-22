@@ -129,24 +129,24 @@ h1 {
 }
 
 #total {
-  box-shadow: 3px 4px 0px 0px #21548a;
-	background: linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
-	background-color: #21c2b5;
-	border-radius: 18px;
-	border: 1px solid #19cf92;
-	display: inline-block;
-	cursor: context-menu;
-	color: rgba(255,255,255,0);;
-	font-family: 'Dynalight', cursive;
-	font-size: 17px;
-	padding: 7px 25px;
-	text-decoration: none;
-	text-shadow: 0px 1px 0px #360580;
+  box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
 }
 
 #total:hover {
-  background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
-	background-color: #3847f0;
+  background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
 }
 
 #redoBtn {
@@ -170,8 +170,62 @@ h1 {
 	background-color: #21c2b5;
 }
 
-#total:active, #redoBtn:active {
+#total:active, #redoBtn:active, #top   {
   position: relative;
 	top: 1px;
+}
+
+#beat {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+#top {
+  box-shadow: 3px 4px 0px 0px #21548a;
+	background: linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
+	background-color: #21c2b5;
+	border-radius: 18px;
+	border: 1px solid #19cf92;
+	display: inline-block;
+	cursor: context-menu;
+	color: rgba(255,255,255,0);;
+	font-family: 'Dynalight', cursive;
+	font-size: 17px;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #360580;
+}
+
+#top:hover {
+  background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
+	background-color: #3847f0;
+}
+
+/* Scoring */
+#chapsScores {
+  list-style-type: none;
+}
+
+#endQuiz {
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#correct {
+  background-color: green;
+  color: white;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+  border-radius: 5px;
+  padding: 20px 40px;
+}
+
+#incorrect {
+  color: white;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+  border-radius: 5px;
+  padding: 20px 40px;
 }
 

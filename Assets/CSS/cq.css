@@ -60,15 +60,37 @@ h1 {
 }
 
 #goToScoreboard:hover {
-  background-color:#408c99;
-  background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 }
 
 /* Button Styles */
+/* Ref. https://www.bestcssbuttongenerator.com/ */
 .knock {
-  font-size: 1.5em;
-  padding: 5px;
-  width: 25%;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color: #eae0c2;
+	border-radius: 15px;
+	border: 2px solid #333029;
+	display: inline-block;
+	cursor: context-menu;
+	color: #505739;
+	font-family: 'Dynalight', cursive;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 12px 16px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
+}
+
+.knock:hover {
+	background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+	background-color: #ccc2a6;
+}
+
+.knock:active {
+	position: relative;
+	top: 1px;
 }
 
 #choiceSection {
@@ -77,10 +99,29 @@ h1 {
 }
 
 .choices {
-  flex-flow: column wrap;
-  width: 50%;
-  margin: 10px;
-  font-size: 1.05em;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color: #599bb3;
+	border-radius: 8px;
+	display: inline-block;
+	cursor: pointer;
+	color: rgb(221, 221, 221);
+	font-family: 'Dynalight', cursive;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 13px 32px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #3d768a;
+}
+
+.choices:hover {
+	background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+
+.choices:active {
+	position: relative;
+	top: 1px;
 }
 
 .ownIt {
@@ -89,47 +130,47 @@ h1 {
 
 #total {
   box-shadow: 3px 4px 0px 0px #21548a;
-	background:linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
-	background-color:#21c2b5;
-	border-radius:18px;
-	border:1px solid #19cf92;
-	display:inline-block;
-	cursor:pointer;
-	color:rgba(255,255,255,0);;
+	background: linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
+	background-color: #21c2b5;
+	border-radius: 18px;
+	border: 1px solid #19cf92;
+	display: inline-block;
+	cursor: context-menu;
+	color: rgba(255,255,255,0);;
 	font-family: 'Dynalight', cursive;
-	font-size:17px;
-	padding:7px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #360580;
+	font-size: 17px;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #360580;
 }
 
 #total:hover {
-  background:linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
-	background-color:#3847f0;
+  background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
+	background-color: #3847f0;
 }
 
 #redoBtn {
   box-shadow: 3px 4px 0px 0px #19cf92;
-	background:linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
-	background-color:#360580;
-	border-radius:18px;
-	border:1px solid #21548a;
-	display:inline-block;
-	cursor:pointer;
-	color:rgba(255,255,255,0);
+	background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
+	background-color: #360580;
+	border-radius: 18px;
+	border: 1px solid #21548a;
+	display: inline-block;
+	cursor: context-menu;
+	color: rgba(255,255,255,0);
 	font-family: 'Dynalight', cursive;
-	font-size:17px;
-	padding:7px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3847f0;
+	font-size: 17px;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #3847f0;
 }
 
 #redoBtn:hover {
-  background:linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
-	background-color:#21c2b5;
+  background: linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
+	background-color: #21c2b5;
 }
 
 #total:active, #redoBtn:active {
-  position:relative;
-	top:1px;
+  position: relative;
+	top: 1px;
 }

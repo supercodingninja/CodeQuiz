@@ -9,8 +9,20 @@ h1 {
   color: rgba(255,255,255,0);
   font: 65px 'ChunkFiveRegular';
   float: right;
-  /* color: whitesmoke;
-  font-family: 'Dynalight', cursive; */
+  margin-top: 75px;
+  margin-right: 167px;
+  /* color: whitesmoke; */
+}
+
+/* Page's Introduction. */
+#instruct {
+  top: 25px;
+  left: 25px;
+  margin-top: 258px;
+  margin-right: 97px;
+  text-align: center;
+  color:rgb(221, 221, 221);
+  font-size: 1em;
 }
 
 .intro {
@@ -18,16 +30,6 @@ h1 {
   color: rgba(255,255,255,0);
   font: 'ChunkFiveRegular';
   float: right;
-  margin-right: 22px;
-}
-
-#instruct {
-  top: 25px;
-  left: 25px;
-  margin-top: 135px;
-  text-align: center;
-  color:rgb(221, 221, 221);
-  font-size: 1em;
 }
 
 #title {
@@ -37,4 +39,97 @@ h1 {
   color: rgb(221, 221, 221);
   margin-bottom: 22px;
   text-shadow: -1px 1px 0 #000;
+}
+
+.outOfSight {
+  display: none !important;
+}
+
+/* Quiz Container Styles. */
+#quizTime {
+  margin-left: auto;
+  margin-right: 50px;
+  display: inline-flex;
+}
+
+#goToScoreboard {
+  cursor: context-menu;
+  color: rgb(221, 221, 221);
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+#goToScoreboard:hover {
+  background-color:#408c99;
+  background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+}
+
+/* Button Styles */
+.knock {
+  font-size: 1.5em;
+  padding: 5px;
+  width: 25%;
+}
+
+#choiceSection {
+  display: flex;
+  justify-content: center;
+}
+
+.choices {
+  flex-flow: column wrap;
+  width: 50%;
+  margin: 10px;
+  font-size: 1.05em;
+}
+
+.ownIt {
+  border: 5px groove silver;
+}
+
+#total {
+  box-shadow: 3px 4px 0px 0px #21548a;
+	background:linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
+	background-color:#21c2b5;
+	border-radius:18px;
+	border:1px solid #19cf92;
+	display:inline-block;
+	cursor:pointer;
+	color:rgba(255,255,255,0);;
+	font-family: 'Dynalight', cursive;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #360580;
+}
+
+#total:hover {
+  background:linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
+	background-color:#3847f0;
+}
+
+#redoBtn {
+  box-shadow: 3px 4px 0px 0px #19cf92;
+	background:linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
+	background-color:#360580;
+	border-radius:18px;
+	border:1px solid #21548a;
+	display:inline-block;
+	cursor:pointer;
+	color:rgba(255,255,255,0);
+	font-family: 'Dynalight', cursive;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3847f0;
+}
+
+#redoBtn:hover {
+  background:linear-gradient(to bottom, #21c2b5 5%, #3847f0 100%);
+	background-color:#21c2b5;
+}
+
+#total:active, #redoBtn:active {
+  position:relative;
+	top:1px;
 }

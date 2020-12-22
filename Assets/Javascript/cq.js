@@ -165,7 +165,7 @@ quizTakers = quizTakers.concat(winner);
 
 var score = 0;
 
-// Having trouble with this part.  I want to store a list of the highest scores of local users (lu) aka "chaps." //
+// Having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers." //
 let quizTakers = [];
 let chapsIndex = 0;
 let chapsScoreIndex = 0;
@@ -302,7 +302,6 @@ function johnHancock() {
         endQuizEl.classList.add('outOfSight');
 
         quizTakers.forEach(() => {
-        
             chaps = document.createElement('li');
             chaps.innerText = quizTakers[chapsIndex].chap;
             chaplistEl.appendChild(chaps);
@@ -310,8 +309,8 @@ function johnHancock() {
             
             chapsScores = document.createElement('li');
             chapsScores.innerText = quizTakers[chapsScoreIndex].totalScore;
-            chapsScoresEl.appendChild(chapsScores)
-            chapsScoreIndex++
+            chapsScoresEl.appendChild(chapsScores);
+            chapsScoreIndex++;
         });
         
     }
@@ -323,4 +322,32 @@ function redoQuiz() {
     return;
 };
 
-// Add Event Listeners, here. //
+// Add Event Listeners, here. //	
+// Begin quiz. //
+introBtnEl.addEventListener('click', beginQuiz);
+
+// Redo Quiz. //
+redoBtnEl.addEventListener('click', redoQuiz);
+topEl.addEventListener('click', redoQuiz);
+
+// This event listener will allow the user to store their score and add their initials.
+totalEl.addEventListener('click', johnHancock);
+
+goToScoreboardEl.addEventListener('click', () => {
+    instructEl.classList.add('outOfSight');
+    quizEl.classList.add('outOfSight');
+    endQuizEl.classList.add('outOfSight');
+    scoreContainerEl.classList.remove('outOfSight');
+
+    quizTakers.forEach(() => {
+        chaps = document.createElement('li');
+        chaps.innerText = quizTakers[chapsIndex].chap;
+        chaplistEl.appendChild(chaps);
+        chapsIndex++;
+        
+        chapsScores = document.createElement('li');
+        chapsScores.innerText = quizTakers[chapsScoreIndex].totalScore;
+        chapsScoresEl.appendChild(chapsScores);
+        chapsScoreIndex++;
+    });
+});

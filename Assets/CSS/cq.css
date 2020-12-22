@@ -49,15 +49,22 @@ h1 {
 
 /* Quiz Container Styles. */
 #quizTime {
-  margin-left: auto;
-  margin-right: 50px;
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
   display: inline-flex;
 }
 
 #goToScoreboard {
   cursor: context-menu;
   color: rgb(221, 221, 221);
-  margin-left: 20px;
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
   text-decoration: none;
 }
 
@@ -68,19 +75,31 @@ h1 {
 
 #beat {
   width: 100%;
-  justify-content: center;
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
   display: flex;
 }
 
 #endQuiz {
   display: flex;
   max-width: 100%;
-  justify-content: center;
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
   align-items: center;
 }
 
 .ownIt {
-  margin: 5px;
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
 }
 
 /* Button Styles */
@@ -223,21 +242,25 @@ h1 {
 
 /* Scoring Displays */
 #chapsScores {
+  margin-top: 320px;
+  margin-right: 97px;
+  text-align: center;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
   list-style-type: none;
 }
 
 #correct {
-  background-color: green;
-  color: white;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+  /* Use .attr for background-image: Assets/Media/choiceReactions_future project/really.jpg; */
+  color: rgb(221, 221, 221);
   border-radius: 5px;
-  padding: 20px 40px;
+  text-align: center;
 }
 
 #incorrect {
-  color: white;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+  /* Use .attr for background-image: Assets/Media/choiceReactions_future project/noWay.jpg; */
+  color:rgb(221, 221, 221);
   border-radius: 5px;
-  padding: 20px 40px;
+  text-align: center;
 }
 

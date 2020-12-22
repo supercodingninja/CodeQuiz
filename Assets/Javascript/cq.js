@@ -13,7 +13,7 @@ const instructEl = document.getElementById('instruct');
 const questions = [{
     Q: "What instrument does `'Fred'` play?"
 
-    choice1: "Saxophone!"
+    choice1: "Saxophone"
     choice2: "`Fred` thinks all band members are geeks."
     choice3: "`Fred` doesn't play `an` instrument."
 

@@ -146,11 +146,9 @@ const correctEl = document.getElementById('correct');
 const incorrectEl = document.getElementById('incorrect');
 const VerdictEl = document.getElementById('Verdict');
 
+let qAsked;
 let randomIndex;
 let randomQ;
-let qAsked;
-
-const goToScoreboardEl = document.getElementById('goToScoreboard');
 
 // Scoring and End of Quiz //
 const chapsScoresEl = document.querySelector('#chapsScores');
@@ -161,9 +159,168 @@ const topEl = document.querySelector('#top');
 const endQuizEl = document.getElementById('endQuiz');
 const totalEl = document.getElementById('total');
 const redoBtnEl = document.getElementById('redoBtn');
+const winner =  JSON.parse(localStorage.getItem('winner')) || [];
+const goToScoreboardEl = document.getElementById('goToScoreboard');
+quizTakers = quizTakers.concat(winner);
 
+var score = 0;
+
+// Having trouble with this part.  I want to store a list of the highest scores of local users (lu) aka "chaps." //
+let quizTakers = [];
 let chapsIndex = 0;
 let chapsScoreIndex = 0;
 
-// Having trouble with this part.  I want to store a list of the highest scores. //
-let localUsers = [];
+// Declaring the Timer. //
+const timerCountdown = document.getElementById('timer');
+let count; // Will define in function. //
+let timer = 100;
+
+
+// Getting to the Functions... //
+function countdown() { // Function for Timer Countdown. //
+    count = setTimer(function() {
+        if (timer <= 0) {
+           resetTimer(timer = 0);
+           
+           instructEl.classList.add('outOfSight');
+           quizEl.classList.remove('outOfSight');
+           endQuizEl.classList.add('outOfSight');
+        };
+
+        timerCountdown.innerHTML = ('Timer: ' + timer);
+        timer -= 1;
+    },
+    1000);
+};
+
+// Function to start my quiz.  THE QUIZ BETTER SHOW (instructions suppose to disappear). //
+function beginQuiz() {
+    instructEl.classList.add('outOfSight');
+    quizEl.classList.remove('outOfSight');
+    endQuizEl.classList.add('outOfSight');
+
+    // DON'T FORGET to Call countdown timer. //
+    countdown();
+
+    // Randomize questions. //
+    randomIndex = 0;
+    randomQ = questions.sort(() => Math.random() - .3);
+    newQ(randomQ, randomIndex);
+};
+
+function newQ(randomQ, randomIndex) {
+    if (randomIndex >= randomQ.length) {
+        resetTimer(count)
+        quizEl.classList.add('outOfSight');
+        endQuizEl.classList.remove('outOfSight')
+        return;
+    };
+    
+    var qAsked = randomQ[randomIndex];
+    questionEl.innerText = qAsked.question;
+    
+    choices.forEach(choiceMade => {
+        const number = choiceMade.dataset['number'];
+        choiceMade.innerText = number + '. ' + qAsked['choiceMade' + number];
+    })
+};
+
+// Function for Scoring. DEFINATELY NEED TO TEST. //
+qScore.innerHTML = ('Score: ' + score);
+        score += 1;
+
+// Evaluation of User Choices. //
+choices.forEach(choiceMade => {
+    choiceMade.addEventListener('click', event => {
+        event.preventDefault();
+        const userChoice = event.target.dataset.number
+
+        if (userChoice == questions[randomIndex].A) {
+            VerdictEl.classList.remove('outOfSight');
+            correctEl.classList.remove('outOfSight');
+            
+            // Rewards for scoring. //
+            score ++;
+            timer+=3;
+            
+            pause(() => {
+                VerdictEl.classList.add('outOfSight');
+                correctEl.classList.add('outOfSight');
+            },
+            
+            1000);
+
+            randomIndex++;
+            newQ(randomQ, randomIndex);
+
+        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+            VerdictEl.classList.remove('outOfSight');
+            incorrectEl.classList.remove('outOfSight');
+
+            // What happens if they answer incorrectly: Lost of time- thought you knew me, LOL! //
+            score --;
+            timer-=3;
+            
+            pause(() => {
+                VerdictEl.classList.add('outOfSight');
+                incorrectEl.classList.add('outOfSight');
+            },
+            
+            1000);
+        }
+    })    
+});
+
+// Sign Your Name! //
+function johnHancock() {
+    if (signEl.value < 1) {
+        
+        return;
+
+    } else {
+
+        qScore.textContent = score;
+
+        // Maybe... DEFINATELY NEED TO TEST. //
+        let scoreSubmittion = {
+            chap: signEl.value.toUpperCase(),
+            
+            // The total score is adding var 'score + timer': this is the user's score + the time left. //
+            totalScore: score + timer,
+            }
+
+        winner.push(scoreSubmittion)
+
+        // Ordering local users (lu). //
+        winner.sort( (a,b) => b.totalScore - a.totalScore);
+        
+        winner.splice(5);
+
+        localStorage.setItem('winner', JSON.stringify(winner));
+
+        highscoreEl.classList.remove('outOfSight');
+        endQuizEl.classList.add('outOfSight');
+
+        quizTakers.forEach(() => {
+        
+            chaps = document.createElement('li');
+            chaps.innerText = quizTakers[chapsIndex].chap;
+            chaplistEl.appendChild(chaps);
+            chapsIndex++;
+            
+            chapsScores = document.createElement('li');
+            chapsScores.innerText = quizTakers[chapsScoreIndex].totalScore;
+            chapsScoresEl.appendChild(chapsScores)
+            chapsScoreIndex++
+        });
+        
+    }
+
+};
+
+function redoQuiz() {
+    location.redo();
+    return;
+};
+
+// Add Event Listeners, here. //

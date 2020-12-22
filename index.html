@@ -29,7 +29,7 @@
             <section id="instruct" class="intro">
                 <h2 id="title" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; background-size: contain; background-position: center;">Do You Know 'Fred?'</h2>
                 
-                <p>How well do you know him?  Test your luck, with speed and accuracy:<br> Your time left & the amount of answers correct, all determine your score.<br> Choose the Best option, available. Any incorrect answer takes away time.</p>
+                <p>How well do you know him?  Test your luck, with speed and accuracy!<br>Your time left & the amount of answers correct, all determine your score.<br>Choose the Best option, available. Any incorrect answer takes away time and score.<br>Answer correctly, and you will be rewarded more time and points!</p>
 
                 <button class="knock">Knock-knock</button>
             </section>
@@ -52,6 +52,7 @@
                     <button class="choices" id="choice10" data-number="10"></button>
                 </div>
 
+                <!-- Timer, Score, and High Score headers. -->
                 <header>
                     <a href="#" id="goToScoreboard">Fred's Chaps</a>
 
@@ -63,8 +64,9 @@
 
             <!-- Evaluation of user's answer. -->
             <section id="Verdict" class="outOfSight">
-                <p id="correct" class="outOfSight">Correct!</p>
-                <p id="incorrect" class="outOfSight">What?! That is so, not Me!</p>
+                <p id="correct" class="outOfSight" style="background-image: url('Assets/Media/choiceReactions_future project/really.jpg');  background-repeat: no-repeat; background-size: contain; background-position: center">Correct!</p>
+
+                <p id="incorrect" class="outOfSight" style="background-image: url('Assets/Media/choiceReactions_future project/noWay.jpg');  background-repeat: no-repeat; background-size: contain; background-position: center;">What?! That is so, not Me!</p>
             </section>
 
             <!-- End of quiz/Out of time -->
@@ -82,6 +84,7 @@
                         <h4>Chaps</h4>
                         <ol id="chaplist"></ol>
                     </div>
+
                     <div id="highScores">
                         <h2>High Scores</h2>
                         <ol id="chapScores"></ol>
@@ -94,7 +97,7 @@
             </section>
         </main>
       
-        <!-- Bootstrap Adde, JavaScript Bundle with Popper -->
+        <!-- Bootstrap Added, JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <!-- jQuery Library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

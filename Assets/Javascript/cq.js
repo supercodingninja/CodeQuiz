@@ -5,11 +5,14 @@
 // Event listeners
 // This will make it easier to get assistance on any area(s) with issues. //
 
-// Intro. //
-const introBtnEl = document.getElementById('knock');
+// Introduction page: I want my quiz to render new look and data, as the demo introduced, so that everything is on one page.  This is the of first set of data the page will render; and I want this data to render new data (questions and choices, etc.).  I created a button, along with an event listener to help me accomplish this.  I prefer to have all event listeners at the end of my work (Vanilla Javascript); but I seem to be having issues implementing my thoughts to the machine: so, in order for me to achieve my desire outcome, I created my event listener for my button //
 const instructEl = document.getElementById('instruct');
+const introBtnEl = document.getElementById('knock');
+introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
 
-// Q & A //
+// Q & A: these are my quiz questions, answers (including correct options to select). //
+const QEl = document.getElementById('Q');
+const quizEl = document.getElementById('quiz');
 const questions = [{
     Q: "What instrument does `'Fred'` play?",
 
@@ -136,39 +139,41 @@ const questions = [{
 
     A: 2,
 },]
-
-const QEl = document.getElementById('Q');
-const quizEl = document.getElementById('quiz');
-
 const choices = Array.from(document.querySelectorAll('.choices'));
 
-const correctEl = document.getElementById('correct');
-const incorrectEl = document.getElementById('incorrect');
-const VerdictEl = document.getElementById('Verdict');
-
+// This is to automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
 let qAsked;
 let randomIndex;
 let randomQ;
 
-// Scoring and End of Quiz //
+// This is to inform the quiz taker whether their choice selected was correct or not. //
+const correctEl = document.getElementById('correct');
+const incorrectEl = document.getElementById('incorrect');
+const VerdictEl = document.getElementById('Verdict');
+
+// Variables for Scoring Functions and Operations. //
+// This may be where my problem is: I'm losing train of thought here, constantly; so check for naming conflicts, repeated expression/functions/thoughts for accomplishing same end result, etc. //
+var score = 0;
 const chapsScoresEl = document.querySelector('#chapsScores');
 const chaplistEl = document.querySelector('#chaplist');
-const scoreContainerEl = document.querySelector('#scoreContainer');
-const signEl = document.querySelector('#sign');
-const topEl = document.querySelector('#top');
-const endQuizEl = document.getElementById('endQuiz');
-const totalEl = document.getElementById('total');
-const redoBtnEl = document.getElementById('redoBtn');
-const winner =  JSON.parse(localStorage.getItem('winner')) || [];
+
 const goToScoreboardEl = document.getElementById('goToScoreboard');
+const scoreContainerEl = document.querySelector('#scoreContainer');
 
-
-var score = 0;
-
-// Having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers." //
-let quizTakers = [];
+const winner =  JSON.parse(localStorage.getItem('winner')) || [];
+var quizTakers = [];
+let quizTakers = quizTakers.concat(winner); // I am having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers."  I feel ike I already accomplished what I want in my thought process; or I am still, not communicating what I hope to accomplish, which is taking the quizntaker's score, placing it on a scoreboard; and eventually, with another function, rank all quiz takers' scores in highest to lowest order. //
 let chapsIndex = 0;
 let chapsScoreIndex = 0;
+
+// Own It and Sign It: these are the variables to the buttons for submitting results for quiz, and ability to redo the quiz; also SIGNING YOUR JOHN HANCOCK- Do You Know Me, LOL! //
+const totalEl = document.getElementById('total');
+const redoBtnEl = document.getElementById('redoBtn');
+const signEl = document.querySelector('#sign');
+const endQuizEl = document.getElementById('endQuiz');
+
+// I want to make this a way for the users to try and top each other's high scores on the same local, after they see the highest quiz scores, in ranking order.  This is my button I created to retake the quiz, AFTER, they had sign their initials to the quiz. //
+const topEl = document.querySelector('#top');
 
 // Declaring the Timer. //
 const timerCountdown = document.getElementById('timer');
@@ -323,9 +328,6 @@ function redoQuiz() {
 };
 
 // Add Event Listeners, here. //	
-// Begin quiz. //
-introBtnEl.addEventListener('click', beginQuiz);
-
 // Redo Quiz. //
 redoBtnEl.addEventListener('click', redoQuiz);
 topEl.addEventListener('click', redoQuiz);

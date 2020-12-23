@@ -162,7 +162,7 @@ const scoreContainerEl = document.querySelector('#scoreContainer');
 
 const winner =  JSON.parse(localStorage.getItem('winner')) || [];
 var quizTakers = [];
-let quizTakers = quizTakers.concat(winner); // I am having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers."  I feel ike I already accomplished what I want in my thought process; or I am still, not communicating what I hope to accomplish, which is taking the quizntaker's score, placing it on a scoreboard; and eventually, with another function, rank all quiz takers' scores in highest to lowest order. //
+// let quizTakers = quizTakers.concat(winner); // I am having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers."  I feel ike I already accomplished what I want in my thought process; or I am still, not communicating what I hope to accomplish, which is taking the quizntaker's score, placing it on a scoreboard; and eventually, with another function, rank all quiz takers' scores in highest to lowest order. //
 let chapsIndex = 0;
 let chapsScoreIndex = 0;
 

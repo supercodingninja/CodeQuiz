@@ -161,7 +161,7 @@ const totalEl = document.getElementById('total');
 const redoBtnEl = document.getElementById('redoBtn');
 const winner =  JSON.parse(localStorage.getItem('winner')) || [];
 const goToScoreboardEl = document.getElementById('goToScoreboard');
-quizTakers = quizTakers.concat(winner);
+
 
 var score = 0;
 

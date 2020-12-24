@@ -175,26 +175,26 @@ const endQuizEl = document.getElementById('endQuiz');
 const topEl = document.querySelector('#top');
 
 // Declaring the Timer. //
-const timerCountdown = document.getElementById('timer');
+const timerCountdown = document.getElementById('quizTime');
 let count; // Will define in function. //
 let timer = 100;
 
 
 // Getting to the Functions... //
 function countdown() { // Function for Timer Countdown. //
-    count = setTimer(function() {
-        if (timer <= 0) {
-           resetTimer(timer = 0);
-           
-           instructEl.classList.add('outOfSight');
-           quizEl.classList.remove('outOfSight');
-           endQuizEl.classList.add('outOfSight');
-        };
 
-        timerCountdown.innerHTML = ('Timer: ' + timer);
-        timer -= 1;
-    },
-    1000);
+timer--;
+timerCountdown.textContent = ('Timer: ' + timer);
+
+if (timer <= 0) {
+           clearInterval(timer);
+           timer = 100; // This sets my timer back to what it was. //
+           
+           instructEl.classList.add('outOfSight'); // Page's Indtruction. //
+           quizEl.classList.remove('outOfSight'); // Page's Quiz. //
+           endQuizEl.classList.add('outOfSight'); // Page' Sccore List. //
+        };
+        console.log(timer);
 };
 
 // Function to start my quiz.  THE QUIZ BETTER SHOW (instructions suppose to disappear). //
@@ -204,7 +204,7 @@ function beginQuiz() {
     endQuizEl.classList.add('outOfSight');
 
     // DON'T FORGET to Call countdown timer. //
-    countdown();
+    setInterval(countdown ,1000);
 
     // Randomize questions. //
     randomIndex = 0;
@@ -221,7 +221,7 @@ function newQ(randomQ, randomIndex) {
     };
     
     var qAsked = randomQ[randomIndex];
-    questionEl.innerText = qAsked.question;
+    quizEl.innerText = qAsked.question;
     
     choices.forEach(choiceMade => {
         const number = choiceMade.dataset['number'];
@@ -328,9 +328,7 @@ function redoQuiz() {
 
 // Add Event Listeners, here. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
-if(introBtnEl){
-    introBtnEl.addEventListener('click', false); // Ref. https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null for javascript error "Cannot read property 'addEventListener' of null." //"
-}
+
 
 // Redo Quiz. //
 redoBtnEl.addEventListener('click', redoQuiz);
@@ -345,6 +343,7 @@ goToScoreboardEl.addEventListener('click', () => {
     endQuizEl.classList.add('outOfSight');
     scoreContainerEl.classList.remove('outOfSight');
 
+    // Ordering the quiz takers (each quiz taker who makes the top 5 list (remember the splice 5 created earlier) will become a "chap" (my chaps know me), and make  a list), I want my chaps to be in ranking order; and I want to make sure that data gets to my html document. //
     quizTakers.forEach(() => {
         chaps = document.createElement('li');
         chaps.innerText = quizTakers[chapsIndex].chap;

@@ -8,7 +8,6 @@
 // Introduction page: I want my quiz to render new look and data, as the demo introduced, so that everything is on one page.  This is the of first set of data the page will render; and I want this data to render new data (questions and choices, etc.).  I created a button, along with an event listener to help me accomplish this.  I prefer to have all event listeners at the end of my work (Vanilla Javascript); but I seem to be having issues implementing my thoughts to the machine: so, in order for me to achieve my desire outcome, I created my event listener for my button //
 const instructEl = document.getElementById('instruct');
 const introBtnEl = document.getElementById('knock');
-introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
 
 // Q & A: these are my quiz questions, answers (including correct options to select). //
 const QEl = document.getElementById('Q');
@@ -327,7 +326,12 @@ function redoQuiz() {
     return;
 };
 
-// Add Event Listeners, here. //	
+// Add Event Listeners, here. //
+introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
+if(introBtnEl){
+    introBtnEl.addEventListener('click', false); // Ref. https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null for javascript error "Cannot read property 'addEventListener' of null." //"
+}
+
 // Redo Quiz. //
 redoBtnEl.addEventListener('click', redoQuiz);
 topEl.addEventListener('click', redoQuiz);

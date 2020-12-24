@@ -287,7 +287,7 @@ function johnHancock() {
         qScore.textContent = score;
 
         // Maybe... DEFINATELY NEED TO TEST. //
-        let scoreSubmittion = {
+        let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
             chap: signEl.value.toUpperCase(),
             
             // The total score is adding var 'score + timer': this is the user's score + the time left. //

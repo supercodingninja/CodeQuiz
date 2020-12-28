@@ -13,11 +13,13 @@ const introBtnEl = document.getElementById('knock');
 const QEl = document.getElementById('Q');
 const quizEl = document.getElementById('quiz');
 const questions = [{
-    Q: "What instrument does `'Fred'` play?",
+    Q: "What's an instrument `'Fred'` plays?",
 
-    choice1: "Saxophone",
+    choice1: "Trumpet",
     choice2: "`Fred` thinks all band members are geeks.",
-    choice3: "`Fred` doesn't play `an` instrument.",
+    choice3: "`Fred` doesn't play `an` instrument, he plays several.",
+    choice4: "Accordian",
+    choice5: "Susaphone",
 
     A: "3",
 },{
@@ -26,6 +28,8 @@ const questions = [{
     choice1: "Most saxophones, baritone, flute.",
     choice2: "Piano, guitar, drums.",
     choice3: "Anything he puts his mind to.",
+    choice4: "6",
+    choice5: "3",
 
     A: 3,
 },{
@@ -54,7 +58,9 @@ const questions = [{
     choice1: "Really?!",
     choice2: "derF",
     choice3: "Freddy",
-
+    choice4: "Destroyer",
+    choice5: "Fredd",
+    
     A: 1,
 },{
     Q: "What is `Frederick's` favorite nickname?",
@@ -62,14 +68,18 @@ const questions = [{
     choice1: "`Fred`",
     choice2: "Turbo",
     choice3: "Motto",
+    choice4: "Frederick, The Great!",
+    choice5: "T-Time!",
 
     A: 2,
 },{
     Q: "What is `Frederick's` religion?",
 
-    choice1: "`Fred` was a devout Muslim, since he served in the wars.  He met his wife in Baharain, while detached to a U. S. Naval base; and was converted to Christianity, when his father-in-law gave him a choice, `Your religion, or my daughter.`",
+    choice1: "`Fred` was a devout muslim, since he served in the wars.  He met his wife in Baharain, while detached to a U. S. Naval base; and was converted to Christianity, when his father-in-law gave him a choice, `Your religion, or my daughter.`",
     choice2: "`Fred` believes in Christianity, Judaism, and Muslim (all from father Abraham).",
     choice3: "`Frederick's` Faith is Christianity.",
+    choice4: "`Frederick is an atheist.",
+    choice5: "`Frederick is a budhist.",
 
     A: 3,
 },{
@@ -80,11 +90,6 @@ const questions = [{
     choice3: "is The Mandolorian",
     choice4: "is DudeDad",
     choice5: "is DryBar Comedy",
-    choice6: "is Corbra Kai",
-    choice7: "is Stargate SG-6",
-    choice8: "is Star Trek: Borg Wars",
-    choice9: "is Mighty Morphing Power Rangers",
-    choice10: "is Star Wars",
 
     A: 3,
 },{
@@ -93,6 +98,8 @@ const questions = [{
     choice1: "The Mandolorian",
     choice2: "Star Wars: The Clone Wars",
     choice3: "Game of Horns",
+    choice4: "You've asked this question.",
+    choice5: "Power Rangers!",
 
     A: 2,
 },{
@@ -103,8 +110,6 @@ const questions = [{
     choice3: "Who lik3s c8ke, anyway:",
     choice4: "35",
     choice5: "It's r38lly none of your busin3ss.",
-    choice6: "37",
-    choice7: "4 the last time, non3 of your business!",
 
     A: 3,
 },{
@@ -113,6 +118,8 @@ const questions = [{
     choice1: "Skydive",
     choice2: "Surf",
     choice3: "Climb Mountains",
+    choice4: "Pop balloons by his wife.",
+    choice5: "Throw snowballs",
 
     A: 2,
 },{
@@ -121,20 +128,28 @@ const questions = [{
     choice1: "Climb Rockwalls",
     choice2: "Fish",
     choice3: "Run",
-
+    choice4: "Swim with dolphins",
+    choice5: "Make Yoda impressions",
+    
     A: 1,
 },{
     Q: "`Fred` was engaged three times.",
 
     choice1: "True",
     choice2: "False",
+    choice3: "False, he was engaged twice",
+    choice4: "This is a personal question, really?!",
+    choice5: "True, but he only bought a diamond ring for his wife.",
 
-    A: 1,
+    A: 5,
 },{
     Q: "`Fred` likes to wear Captain America and Iron Man shirts, while working out.",
 
-    choice1: "True",
-    choice2: "False",
+    choice1: "True, he likes to where all tough Super Hero shirts, while working out.",
+    choice2: "False, Superman shirts before and after workout.",
+    choice3: "Are you serious: YES!",
+    choice4: "False, he likes Spider-Man.",
+    choice5: "False, He likes King Kong.",
 
     A: 2,
 },]
@@ -188,7 +203,7 @@ timerCountdown.textContent = ('Timer: ' + timer);
 
 if (timer <= 0) {
            clearInterval(timer);
-           timer = 100; // This sets my timer back to what it was. //
+           return timer = 100; // This sets my timer back to what it was. //
            
            instructEl.classList.add('outOfSight'); // Page's Indtruction. //
            quizEl.classList.remove('outOfSight'); // Page's Quiz. //

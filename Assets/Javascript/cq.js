@@ -203,7 +203,7 @@ timerCountdown.textContent = ('Timer: ' + timer);
 
 if (timer <= 0) {
            clearInterval(timer);
-           return timer = 100; // This sets my timer back to what it was. //
+           timer == 100; // This sets my timer back to what it was. //
            
            instructEl.classList.add('outOfSight'); // Page's Indtruction. //
            quizEl.classList.remove('outOfSight'); // Page's Quiz. //

@@ -1,6 +1,7 @@
 body {
     background-image: url(Assets/Media/seattle-background-640x415.jpg);
     min-width: 1250px;
+    rgb(221, 221, 221);
   }
 
 h1 {
@@ -11,7 +12,6 @@ h1 {
   float: right;
   margin-top: 75px;
   margin-right: 167px;
-  /* color: whitesmoke; */
 }
 
 /* Page's Introduction. */
@@ -41,29 +41,55 @@ h1 {
   text-shadow: -2px 2.3px 0 #000;
 }
 
-/* Now, you see me- now, you don't! */
-/* Decided to use .attr "style: display: block !important;"  Ref. https://forum.jquery.com/topic/show-elements-with-style-display-none-important-jquery-bug */
-/* .outOfSight {
-  display: none !important;
-} */
-
 /* Quiz Container Styles. */
-#quizTime {
+/* Now, you see me- now, you don't!  Decided to use .attr "style: display: block !important;"  Ref. https://forum.jquery.com/topic/show-elements-with-style-display-none-important-jquery-bug */
+/* Q & A */
+#quiz {
   margin-top: 320px;
-  margin-right: 97px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
-  color: rgb(221, 221, 221);
-  font-size: 1em;
-  display: inline-flex;
+  vertical-align: middle;
+  display: block !important;
 }
 
-#goToScoreboard {
+#Q {
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
+}
+
+#choiceSection {
+  margin-top: 360px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
+}
+
+/* Timer, Score, and High Score headers. */
+#quizHeader{
+  margin-top: 325px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
+}
+
+#goToScoreboard { /* Fred's Chaps */
   cursor: context-menu;
   color: rgb(221, 221, 221);
-  margin-top: 320px;
-  margin-right: 97px;
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
-  color: rgb(221, 221, 221);
+  vertical-align: middle;
+  display: block !important;
   font-size: 1em;
   text-decoration: none;
 }
@@ -73,31 +99,58 @@ h1 {
   background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 }
 
-#beat {
-  width: 100%;
-  margin-top: 320px;
-  margin-right: 97px;
+#quizTime { /* Timer */
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
   color: rgb(221, 221, 221);
   font-size: 1em;
-  display: flex;
+}
+
+#qScore { /* User's Current Score */
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
+}
+
+#beat {
+  width: 100%;
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
+  color: rgb(221, 221, 221);
+  font-size: 1em;
 }
 
 #endQuiz {
   display: flex;
   max-width: 100%;
-  margin-top: 320px;
-  margin-right: 97px;
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
   color: rgb(221, 221, 221);
   font-size: 1em;
-  align-items: center;
 }
 
 .ownIt {
-  margin-top: 320px;
-  margin-right: 97px;
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -143,7 +196,7 @@ h1 {
 	border-radius: 8px;
 	display: inline-block;
 	cursor: pointer;
-	color: rgb(221, 221, 221);
+	/* color: rgb(221, 221, 221); */
 	font-family: 'Dynalight', cursive;
 	font-size: 20px;
 	font-weight: bold;
@@ -163,16 +216,27 @@ h1 {
 }
 
 .ownIt {
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
   border: 5px groove silver;
 }
 
 #total {
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
   box-shadow: 3px 4px 0px 0px #8a2a21;
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
 	background-color:#c62d1f;
 	border-radius:18px;
 	border:1px solid #d02718;
-	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
@@ -188,12 +252,17 @@ h1 {
 }
 
 #redoBtn {
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
   box-shadow: 3px 4px 0px 0px #19cf92;
 	background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
 	background-color: #360580;
 	border-radius: 18px;
 	border: 1px solid #21548a;
-	display: inline-block;
 	cursor: context-menu;
 	color: rgba(255,255,255,0);
 	font-family: 'Dynalight', cursive;
@@ -214,9 +283,14 @@ h1 {
 }
 
 #beat {
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
   width: 100%;
   justify-content: center;
-  display: flex;
 }
 
 #top {
@@ -225,7 +299,12 @@ h1 {
 	background-color: #21c2b5;
 	border-radius: 18px;
 	border: 1px solid #19cf92;
-	display: inline-block;
+	margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  display: block !important;
 	cursor: context-menu;
 	color: rgba(255,255,255,0);;
 	font-family: 'Dynalight', cursive;
@@ -242,9 +321,12 @@ h1 {
 
 /* Scoring Displays */
 #chapsScores {
-  margin-top: 320px;
-  margin-right: 97px;
+  margin-top: 350px;
+  margin-right: 370px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
   color: rgb(221, 221, 221);
   font-size: 1em;
   list-style-type: none;
@@ -254,13 +336,23 @@ h1 {
   /* Use .attr for background-image: Assets/Media/choiceReactions_future project/really.jpg; */
   color: rgb(221, 221, 221);
   border-radius: 5px;
+  margin-top: 370px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
 }
 
 #incorrect {
   /* Use .attr for background-image: Assets/Media/choiceReactions_future project/noWay.jpg; */
   color:rgb(221, 221, 221);
   border-radius: 5px;
+  margin-top: 370px;
+  margin-right: 350px;
+  align-items: center;
   text-align: center;
+  vertical-align: middle;
+  display: block !important;
 }
 

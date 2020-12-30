@@ -18,7 +18,8 @@
         <title>Do You Know 'Fred?'</title>
     </head>
 
-    <body style="background-image: url(Assets/Media/seattle-background-640x415.jpg);  background-repeat: no-repeat; background-size: cover;">
+    <body>
+    <!-- <body style="background-image: url(Assets/Media/seattle-background-640x415.jpg); background-repeat: no-repeat; background-size: cover;"> -->
 
         <header>
             <h1>Somewhere in Seattle, is a guy named, 'Fred'...</h1>
@@ -39,7 +40,7 @@
                 <h3 id="Q"></h3>
 
                 <!-- Choices for user's answers. -->
-                <div id="choiceSection">
+                <div id="choiceSection" class="outOfSight" style="display: block !important;">
                     <div><button class="choices" id="choice1" data-number="1"></button></div>
                     <div><button class="choices" id="choice2" data-number="2"></button></div>
                     <div><button class="choices" id="choice3" data-number="3"></button></div>
@@ -54,7 +55,7 @@
 
 
                 <!-- Timer, Score, and High Score headers. -->
-                <header class="quizHeader">
+                <header id="quizHeader" class="outOfSight" style="display: block !important;">
                     <a href="#" id="goToScoreboard">Fred's Chaps</a>
 
                     <div id="quizTime">Timer: </div>
@@ -66,9 +67,9 @@
 
             <!-- Evaluation of user's answer. -->
             <section id="Verdict" class="outOfSight" style="display: block !important;">
-                <p id="correct" class="outOfSight" style="display: block !important; background-image: url('Assets/Media/choiceReactions_future project/really.jpg');  background-repeat: no-repeat; background-size: contain; background-position: center;">Correct!</p>
+                <p id="correct" class="outOfSight" style="display: block !important; background-image: url('Assets/Media/choiceReactions_future project/really.jpg'); background-repeat: no-repeat; background-size: contain; background-position: center;">Correct!</p>
 
-                <p id="incorrect" class="outOfSight" style="display: block !important; background-image: url('Assets/Media/choiceReactions_future project/noWay.jpg');  background-repeat: no-repeat; background-size: contain; background-position: center;">What?! That is so, not Me!</p>
+                <p id="incorrect" class="outOfSight" style="display: block !important; background-image: url('Assets/Media/choiceReactions_future project/noWay.jpg'); background-repeat: no-repeat; background-size: contain; background-position: center;">What?! That is so, not Me!</p>
             </section>
 
 

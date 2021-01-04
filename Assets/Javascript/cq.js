@@ -211,8 +211,9 @@ if (timer <= 0) {
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
     };
-        console.log(timer);
+    console.log(timer);
 };
+console.log(countdown);
 
 // Function to start my quiz.  THE QUIZ BETTER SHOW (instructions suppose to disappear). //
 function beginQuiz() {
@@ -227,6 +228,7 @@ function beginQuiz() {
     randomIndex = 0;
     randomQ = questions.sort(() => Math.random() - .3);
     newQ(randomQ, randomIndex);
+    console.log(beginQuiz);
 };
 
 function newQ(randomQ, randomIndex) {
@@ -236,6 +238,7 @@ function newQ(randomQ, randomIndex) {
         endQuizEl.classList.remove('hideElement')
         return;
     };
+    console.log(randomIndex >= randomQ.length);
     
     var qAsked = randomQ[randomIndex];
     quizEl.innerText = qAsked.question;
@@ -243,10 +246,11 @@ function newQ(randomQ, randomIndex) {
     choices.forEach(choiceMade => {
         const number = choiceMade.dataset['number'];
         choiceMade.innerText = number + '. ' + qAsked['choiceMade' + number];
-    })
+    });  
 };
+console.log(newQ);
 
-// Function for Scoring. DEFINATELY NEED TO TEST. //
+// Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
 qScore.innerHTML = ('Score: ' + score);
         score += 1;
 
@@ -268,13 +272,15 @@ choices.forEach(choiceMade => {
                 VerdictEl.classList.add('hideElement');
                 correctEl.classList.add('hideElement');
             },
-            
             1000);
+            console.log(pause);
 
             randomIndex++;
             newQ(randomQ, randomIndex);
-
-        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+        }
+        // console.log(userChoice == questions[randomIndex].A); 
+        
+        else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
             VerdictEl.classList.remove('hideElement');
             incorrectEl.classList.remove('hideElement');
 
@@ -286,9 +292,10 @@ choices.forEach(choiceMade => {
                 VerdictEl.classList.add('hideElement');
                 incorrectEl.classList.add('hideElement');
             },
-            
             1000);
+            console.log(pause);
         }
+        console.log(userChoice != questions[randomIndex].A);
     })    
 });
 
@@ -333,15 +340,15 @@ function johnHancock() {
             chapsScoresEl.appendChild(chapsScores);
             chapsScoreIndex++;
         });
-        
-    }
-
+    };
 };
+console.log(johnHancock);
 
 function redoQuiz() {
     location.redo();
     return;
 };
+console.log(redoQuiz);
 
 // Add Event Listeners, here. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //

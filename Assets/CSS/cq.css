@@ -41,6 +41,10 @@ h1 {
   text-shadow: -2px 2.3px 0 #000;
 }
 
+.hideElement {
+  display: none;
+}
+
 /* Quiz Container Styles. */
 /* Now, you see me- now, you don't!  Decided to use .attr "style: display: block !important;"  Ref. https://forum.jquery.com/topic/show-elements-with-style-display-none-important-jquery-bug */
 /* Q & A */

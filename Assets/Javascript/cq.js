@@ -207,18 +207,18 @@ if (timer <= 0) {
     // timer = 100; // This sets my timer back to what it was. //
     
     
-    instructEl.classList.add('outOfSight'); // Page's Indtruction. //
-    quizEl.classList.remove('outOfSight'); // Page's Quiz. //
-    endQuizEl.classList.add('outOfSight'); // Page' Score List. //
+    instructEl.classList.add('hideElement'); // Page's Indtruction. //
+    quizEl.classList.remove('hideElement'); // Page's Quiz. //
+    endQuizEl.classList.add('hideElement'); // Page' Score List. //
     };
         console.log(timer);
 };
 
 // Function to start my quiz.  THE QUIZ BETTER SHOW (instructions suppose to disappear). //
 function beginQuiz() {
-    instructEl.classList.add('outOfSight');
-    quizEl.classList.remove('outOfSight');
-    endQuizEl.classList.add('outOfSight');
+    instructEl.classList.add('hideElement');
+    quizEl.classList.remove('hideElement');
+    endQuizEl.classList.add('hideElement');
 
     // DON'T FORGET to Call countdown timer. //
     setInterval(countdown ,1000);
@@ -232,8 +232,8 @@ function beginQuiz() {
 function newQ(randomQ, randomIndex) {
     if (randomIndex >= randomQ.length) {
         resetTimer(count)
-        quizEl.classList.add('outOfSight');
-        endQuizEl.classList.remove('outOfSight')
+        quizEl.classList.add('hideElement');
+        endQuizEl.classList.remove('hideElement')
         return;
     };
     
@@ -257,16 +257,16 @@ choices.forEach(choiceMade => {
         const userChoice = event.target.dataset.number
 
         if (userChoice == questions[randomIndex].A) {
-            VerdictEl.classList.remove('outOfSight');
-            correctEl.classList.remove('outOfSight');
+            VerdictEl.classList.remove('hideElement');
+            correctEl.classList.remove('hideElement');
             
             // Rewards for scoring. //
             score ++;
             timer+=3;
             
             pause(() => {
-                VerdictEl.classList.add('outOfSight');
-                correctEl.classList.add('outOfSight');
+                VerdictEl.classList.add('hideElement');
+                correctEl.classList.add('hideElement');
             },
             
             1000);
@@ -275,16 +275,16 @@ choices.forEach(choiceMade => {
             newQ(randomQ, randomIndex);
 
         } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-            VerdictEl.classList.remove('outOfSight');
-            incorrectEl.classList.remove('outOfSight');
+            VerdictEl.classList.remove('hideElement');
+            incorrectEl.classList.remove('hideElement');
 
             // What happens if they answer incorrectly: Lost of time- thought you knew me, LOL! //
             score --;
             timer-=3;
             
             pause(() => {
-                VerdictEl.classList.add('outOfSight');
-                incorrectEl.classList.add('outOfSight');
+                VerdictEl.classList.add('hideElement');
+                incorrectEl.classList.add('hideElement');
             },
             
             1000);
@@ -319,8 +319,8 @@ function johnHancock() {
 
         localStorage.setItem('winner', JSON.stringify(winner));
 
-        highscoreEl.classList.remove('outOfSight');
-        endQuizEl.classList.add('outOfSight');
+        highscoreEl.classList.remove('hideElement');
+        endQuizEl.classList.add('hideElement');
 
         quizTakers.forEach(() => {
             chaps = document.createElement('li');
@@ -355,10 +355,10 @@ topEl.addEventListener('click', redoQuiz);
 totalEl.addEventListener('click', johnHancock);
 
 goToScoreboardEl.addEventListener('click', () => {
-    instructEl.classList.add('outOfSight');
-    quizEl.classList.add('outOfSight');
-    endQuizEl.classList.add('outOfSight');
-    scoreContainerEl.classList.remove('outOfSight');
+    instructEl.classList.add('hideElement');
+    quizEl.classList.add('hideElement');
+    endQuizEl.classList.add('hideElement');
+    scoreContainerEl.classList.remove('hideElement');
 
     // Ordering the quiz takers (each quiz taker who makes the top 5 list (remember the splice 5 created earlier) will become a "chap" (my chaps know me), and make  a list), I want my chaps to be in ranking order; and I want to make sure that data gets to my html document. //
     quizTakers.forEach(() => {

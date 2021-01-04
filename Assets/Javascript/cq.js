@@ -250,6 +250,29 @@ function newQ(randomQ, randomIndex) {
 };
 console.log(newQ);
 
+// Debating on using switch cases for Quiz Taker's choices. //
+// EX: function test() {
+//     let user = "manager";
+//     let hideItem = document.getElementById("something");
+
+//     switch (user) {
+//         case "manager":
+//             return hideItem.classList.add("hide")
+//             break;
+
+//         case "developer":
+//             return "this user is a developer"
+//             break;
+
+//         case "HR":
+//             return "this user is a HR"
+//             break;
+//         default:
+//             break;
+//     }
+// }
+
+
 // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
 qScore.innerHTML = ('Score: ' + score);
         score += 1;

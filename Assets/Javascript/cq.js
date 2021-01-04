@@ -192,7 +192,7 @@ const topEl = document.querySelector('#top');
 // Declaring the Timer. //
 const timerCountdown = document.getElementById('quizTime');
 let count; // Will define in function. //
-let timer = 100;
+let timer = 300;
 
 
 // Getting to the Functions... //

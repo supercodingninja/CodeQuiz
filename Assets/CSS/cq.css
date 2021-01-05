@@ -1,7 +1,13 @@
 body {
-    background-image: url(Assets/Media/seattle-background-640x415.jpg);
+    /* background-image: url(Assets/Media/seattle-background-640x415.jpg);  Doesn't show or work.  I use the <body> in HTML, and it worked. */
     min-width: 1250px;
-    rgb(221, 221, 221);
+    color:rgb(221, 221, 221);
+  }
+
+  .quizContainer {
+    align-items: center;
+    align-content: center;
+    text-align: center;
   }
 
 h1 {
@@ -53,8 +59,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 #Q {
@@ -62,8 +67,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 #choiceSection {
@@ -71,8 +75,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 /* Timer, Score, and High Score headers. */
@@ -81,8 +84,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 #goToScoreboard { /* Fred's Chaps */
@@ -92,8 +94,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   font-size: 1em;
   text-decoration: none;
 }
@@ -108,8 +109,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -119,8 +119,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 #beat {
@@ -128,9 +127,8 @@ h1 {
   margin-top: 350px;
   margin-right: 350px;
   align-items: center;
-  text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  text-align: center;;
+  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -142,8 +140,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -153,8 +150,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -200,7 +196,7 @@ h1 {
 	border-radius: 8px;
 	display: inline-block;
 	cursor: pointer;
-	/* color: rgb(221, 221, 221); */
+	color: rgb(221, 221, 221);
 	font-family: 'Dynalight', cursive;
 	font-size: 20px;
 	font-weight: bold;
@@ -224,8 +220,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   border: 5px groove silver;
 }
 
@@ -234,8 +229,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   box-shadow: 3px 4px 0px 0px #8a2a21;
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
 	background-color:#c62d1f;
@@ -260,8 +254,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   box-shadow: 3px 4px 0px 0px #19cf92;
 	background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
 	background-color: #360580;
@@ -291,8 +284,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   width: 100%;
   justify-content: center;
 }
@@ -307,8 +299,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 	cursor: context-menu;
 	color: rgba(255,255,255,0);;
 	font-family: 'Dynalight', cursive;
@@ -329,8 +320,7 @@ h1 {
   margin-right: 370px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
   list-style-type: none;
@@ -344,8 +334,7 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 
 #incorrect {
@@ -356,7 +345,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  vertical-align: middle;
-  display: block !important;
+  /* display: block !important; */
 }
 

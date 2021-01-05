@@ -1,17 +1,26 @@
-// Note to self: for this repository, try to stick to Vanilla Javascript so that things become clearer (a lot of moving parts):
-// Define global var
-// Function var
-// Call function
-// Event listeners
-// This will make it easier to get assistance on any area(s) with issues. //
-
-// Introduction page: I want my quiz to render new look and data, as the demo introduced, so that everything is on one page.  This is the of first set of data the page will render; and I want this data to render new data (questions and choices, etc.).  I created a button, along with an event listener to help me accomplish this.  I prefer to have all event listeners at the end of my work (Vanilla Javascript); but I seem to be having issues implementing my thoughts to the machine: so, in order for me to achieve my desire outcome, I created my event listener for my button //
 const instructEl = document.getElementById('instruct');
 const introBtnEl = document.getElementById('knock');
-
-// Q & A: these are my quiz questions, answers (including correct options to select). //
+const correctEl = document.getElementById('correct'); // CONSIDER USING SWITCH STATEMENTS, INSTEAD. //
+const incorrectEl = document.getElementById('incorrect'); // CONSIDER USING SWITCH STATEMENTS, INSTEAD. //
+const VerdictEl = document.getElementById('Verdict');
+const goToScoreboardEl = document.getElementById('goToScoreboard');
+const totalEl = document.getElementById('total');
+const signEl = document.getElementById('#sign');
+const endQuizEl = document.getElementById('endQuiz');
+const timerCountdown = document.getElementById('quizTime');
 const QEl = document.getElementById('Q');
 const quizEl = document.getElementById('quiz');
+// CONSIDER USING SWITCH STATEMENTS OR COUNTER INSTEAD OF CONST CHOICES. //
+const choices = Array.from(document.querySelectorAll('.choices'));
+const leadersScoresEl = document.querySelector('#leadersScores');
+const usersListEl = document.querySelector('#usersList');
+const scoreContainerEl = document.querySelector('#scoreContainer');
+
+//JUST CALL FUNCTION BEGINQUIZ(); BUT USE ONCLICK IN HTML: K.I.S. //
+const redoBtnEl = document.getElementById('redoBtn');
+const topEl = document.querySelector('#top');
+
+// Q & A: these are my quiz questions, answers (including correct options to select). //
 const questions = [{
     Q: "What's an instrument `'Fred'` plays?",
 
@@ -153,74 +162,42 @@ const questions = [{
 
     A: 2,
 },]
-const choices = Array.from(document.querySelectorAll('.choices'));
-
-// This is to automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
+// Variables for Scoring Functions and Operations. //
+const winner =  JSON.parse(localStorage.getItem('winner')) || [];
+var score = 0;
+var quizTakers = [];
+// These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
 let qAsked;
 let randomIndex;
 let randomQ;
-
-// This is to inform the quiz taker whether their choice selected was correct or not. //
-const correctEl = document.getElementById('correct');
-const incorrectEl = document.getElementById('incorrect');
-const VerdictEl = document.getElementById('Verdict');
-
-// Variables for Scoring Functions and Operations. //
-// This may be where my problem is: I'm losing train of thought here, constantly; so check for naming conflicts, repeated expression/functions/thoughts for accomplishing same end result, etc. //
-var score = 0;
-const chapsScoresEl = document.querySelector('#chapsScores');
-const chaplistEl = document.querySelector('#chaplist');
-
-const goToScoreboardEl = document.getElementById('goToScoreboard');
-const scoreContainerEl = document.querySelector('#scoreContainer');
-
-const winner =  JSON.parse(localStorage.getItem('winner')) || [];
-var quizTakers = [];
-// let quizTakers = quizTakers.concat(winner); // I am having trouble with this part.  I want to store a list of the highest scores of the local users aka "quizTakers."  I feel ike I already accomplished what I want in my thought process; or I am still, not communicating what I hope to accomplish, which is taking the quizntaker's score, placing it on a scoreboard; and eventually, with another function, rank all quiz takers' scores in highest to lowest order. //
-let chapsIndex = 0;
-let chapsScoreIndex = 0;
-
-// Own It and Sign It: these are the variables to the buttons for submitting results for quiz, and ability to redo the quiz; also SIGNING YOUR JOHN HANCOCK- Do You Know Me, LOL! //
-const totalEl = document.getElementById('total');
-const redoBtnEl = document.getElementById('redoBtn');
-const signEl = document.querySelector('#sign');
-const endQuizEl = document.getElementById('endQuiz');
-
-// I want to make this a way for the users to try and top each other's high scores on the same local, after they see the highest quiz scores, in ranking order.  This is my button I created to retake the quiz, AFTER, they had sign their initials to the quiz. //
-const topEl = document.querySelector('#top');
-
-// Declaring the Timer. //
-const timerCountdown = document.getElementById('quizTime');
+let userIndex = 0;
+let highScoresIndex = 0;
 let count; // Will define in function. //
 let timer = 300;
 
-
-// Getting to the Functions... //
-function countdown() { // Function for Timer Countdown. //
-
-timer--;
-timerCountdown.textContent = ('Timer: ' + timer);
-
-if (timer <= 0) {
-    // resetTimer(timer = 0); //
-    // clearInterval(timer);
-    // timer = 100; // This sets my timer back to what it was. //
+// <==========================================Getting to the Functions===================================================> //
+// Function for Timer Countdown. //
+function countdown() { 
+    timer--;
+    timerCountdown.textContent = ('Timer: ' + timer);
     
+    if (timer <= 0) {
+        instructEl.classList.add('hideElement'); // Page's Indtruction. //
+        quizEl.classList.remove('hideElement'); // Page's Quiz. //
+        endQuizEl.classList.add('hideElement'); // Page' Score List. //
+        
+        console.log(timer);
+        };
     
+    console.log(countdown);
+};
+
+// Function to start my quiz. //
+function beginQuiz() {
     instructEl.classList.add('hideElement'); // Page's Indtruction. //
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
-    };
-    console.log(timer);
-};
-console.log(countdown);
-
-// Function to start my quiz.  THE QUIZ BETTER SHOW (instructions suppose to disappear). //
-function beginQuiz() {
-    instructEl.classList.add('hideElement');
-    quizEl.classList.remove('hideElement');
-    endQuizEl.classList.add('hideElement');
-
+   
     // DON'T FORGET to Call countdown timer. //
     setInterval(countdown ,1000);
 
@@ -228,17 +205,19 @@ function beginQuiz() {
     randomIndex = 0;
     randomQ = questions.sort(() => Math.random() - .3);
     newQ(randomQ, randomIndex);
+    
     console.log(beginQuiz);
-};
+}; 
 
+// Function to randomize quesions. //
 function newQ(randomQ, randomIndex) {
     if (randomIndex >= randomQ.length) {
         resetTimer(count)
         quizEl.classList.add('hideElement');
         endQuizEl.classList.remove('hideElement')
         return;
+        console.log(randomIndex >= randomQ.length);
     };
-    console.log(randomIndex >= randomQ.length);
     
     var qAsked = randomQ[randomIndex];
     quizEl.innerText = qAsked.question;
@@ -246,32 +225,10 @@ function newQ(randomQ, randomIndex) {
     choices.forEach(choiceMade => {
         const number = choiceMade.dataset['number'];
         choiceMade.innerText = number + '. ' + qAsked['choiceMade' + number];
-    });  
+    }); 
+    
+    console.log(newQ);
 };
-console.log(newQ);
-
-// Debating on using switch cases for Quiz Taker's choices. //
-// EX: function test() {
-//     let user = "manager";
-//     let hideItem = document.getElementById("something");
-
-//     switch (user) {
-//         case "manager":
-//             return hideItem.classList.add("hide")
-//             break;
-
-//         case "developer":
-//             return "this user is a developer"
-//             break;
-
-//         case "HR":
-//             return "this user is a HR"
-//             break;
-//         default:
-//             break;
-//     }
-// }
-
 
 // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
 qScore.innerHTML = ('Score: ' + score);
@@ -294,16 +251,15 @@ choices.forEach(choiceMade => {
             pause(() => {
                 VerdictEl.classList.add('hideElement');
                 correctEl.classList.add('hideElement');
+
+                console.log(pause);
             },
+            
             1000);
-            console.log(pause);
 
             randomIndex++;
             newQ(randomQ, randomIndex);
-        }
-        // console.log(userChoice == questions[randomIndex].A); 
-        
-        else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
             VerdictEl.classList.remove('hideElement');
             incorrectEl.classList.remove('hideElement');
 
@@ -314,11 +270,12 @@ choices.forEach(choiceMade => {
             pause(() => {
                 VerdictEl.classList.add('hideElement');
                 incorrectEl.classList.add('hideElement');
+
+                console.log(pause);
             },
+            
             1000);
-            console.log(pause);
         }
-        console.log(userChoice != questions[randomIndex].A);
     })    
 });
 
@@ -334,17 +291,16 @@ function johnHancock() {
 
         // Maybe... DEFINATELY NEED TO TEST. //
         let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
-            chap: signEl.value.toUpperCase(),
+            user: signEl.value.toUpperCase(),
             
             // The total score is adding var 'score + timer': this is the user's score + the time left. //
             totalScore: score + timer,
             }
 
         winner.push(scoreSubmittion)
-
         // Ordering local users (lu). //
         winner.sort( (a,b) => b.totalScore - a.totalScore);
-        
+
         winner.splice(5);
 
         localStorage.setItem('winner', JSON.stringify(winner));
@@ -353,53 +309,43 @@ function johnHancock() {
         endQuizEl.classList.add('hideElement');
 
         quizTakers.forEach(() => {
-            chaps = document.createElement('li');
-            chaps.innerText = quizTakers[chapsIndex].chap;
-            chaplistEl.appendChild(chaps);
-            chapsIndex++;
+            leaders = document.createElement('li');
+            leaders.innerText = quizTakers[userIndex].user
+            usersListEl.appendChild(leaders);
+            userIndex++;
             
-            chapsScores = document.createElement('li');
-            chapsScores.innerText = quizTakers[chapsScoreIndex].totalScore;
-            chapsScoresEl.appendChild(chapsScores);
-            chapsScoreIndex++;
+            leadersScores = document.createElement('li');
+            leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+            leadersScoresEl.appendChild(leadersScores);
+            highScoresIndex++;
         });
     };
-};
-console.log(johnHancock);
 
-function redoQuiz() {
-    location.redo();
-    return;
+    console.log(johnHancock);
 };
-console.log(redoQuiz);
 
 // Add Event Listeners, here. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
-
-
 // Redo Quiz. //
-redoBtnEl.addEventListener('click', redoQuiz);
-topEl.addEventListener('click', redoQuiz);
-
+redoBtnEl.addEventListener('click', beginQuiz);
+topEl.addEventListener('click', beginQuiz);
 // This event listener will allow the user to store their score and add their initials. //
 totalEl.addEventListener('click', johnHancock);
-
 goToScoreboardEl.addEventListener('click', () => {
     instructEl.classList.add('hideElement');
     quizEl.classList.add('hideElement');
     endQuizEl.classList.add('hideElement');
     scoreContainerEl.classList.remove('hideElement');
 
-    // Ordering the quiz takers (each quiz taker who makes the top 5 list (remember the splice 5 created earlier) will become a "chap" (my chaps know me), and make  a list), I want my chaps to be in ranking order; and I want to make sure that data gets to my html document. //
     quizTakers.forEach(() => {
-        chaps = document.createElement('li');
-        chaps.innerText = quizTakers[chapsIndex].chap;
-        chaplistEl.appendChild(chaps);
-        chapsIndex++;
+        leaders = document.createElement('li');
+        leaders.innerText = quizTakers[userIndex].user
+        usersListEl.appendChild(leaders);
+        userIndex++;
         
-        chapsScores = document.createElement('li');
-        chapsScores.innerText = quizTakers[chapsScoreIndex].totalScore;
-        chapsScoresEl.appendChild(chapsScores);
-        chapsScoreIndex++;
+        leadersScores = document.createElement('li');
+        leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+        leadersScoresEl.appendChild(leadersScores);
+        highScoresIndex++;
     });
 });

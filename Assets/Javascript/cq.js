@@ -177,7 +177,9 @@ let qAsked;
 let randomIndex;
 let randomQ;
 let userIndex = 0;
+
 let highScoresIndex = 0;
+let qScore;
 let count; // Will define in function. //
 let timer = 300;
 
@@ -207,9 +209,9 @@ function beginQuiz() {
     // DON'T FORGET to Call countdown timer. //
     setInterval(countdown ,1000);
 
-    function getQuestions {
-        var questionsIndex = 0;
-        var renderQnA = questions[questionsIndex];
+    function getQnA() {
+        var QnAIndex = 0;
+        var renderQnA = questions[QnAIndex];
         QEl.textContent = renderQnA.question;
         choice1EL.textContent = renderQnA.choice1;
         choice2EL.textContent = renderQnA.choice2;
@@ -217,8 +219,8 @@ function beginQuiz() {
         choice4EL.textContent = renderQnA.choice4;
         choice5EL.textContent = renderQnA.choice5;
 
-        console.log(getQuestions);
-        return getQuestions;
+        console.log(getQnA);
+        return getQnA;
     };
     
     console.log(beginQuiz);
@@ -234,38 +236,36 @@ function newQ(randomQ, randomIndex) {
         quizEl.classList.add('hideElement');
         endQuizEl.classList.remove('hideElement')
         return;
-        console.log(randomIndex >= randomQ.length);
+        console.log(randomIndex >= randomQ.length); // Ugh! Ineed to test: how?  Test in application, at this point. //
     };
     
     var qAsked = randomQ[randomIndex];
     quizEl.innerText = qAsked.question;
     
-    choices.forEach(choiceMade => {
-        const number = choiceMade.dataset['number'];
-        choiceMade.innerText = number + '. ' + qAsked['choiceMade' + number];
-    }); 
-    
     console.log(newQ);
 };
-
-// Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-qScore.innerHTML = ('Score: ' + score);
-        score += 1;
-
+ 
 // Evaluation of User Choices. //
+choices.forEach(choiceMade => {
+    let number = choiceMade.dataset['number'];
+    choiceMade.innerText = number + ' ' + qAsked['choiceMade' + number];
+});
+
 choices.forEach(choiceMade => {
     choiceMade.addEventListener('click', event => {
         event.preventDefault();
-        const userChoice = event.target.dataset.number
+        const userChoice = event.target.dataset.number;
 
         if (userChoice == questions[randomIndex].A) {
             VerdictEl.classList.remove('hideElement');
             correctEl.classList.remove('hideElement');
             
             // Rewards for scoring. //
-            score ++;
-            timer+=3;
+            score += 2;
+            // score ++; //
+            timer += 3;
             
+            // Hold the press: was the user right, or WRAAAANG, LOL! //
             pause(() => {
                 VerdictEl.classList.add('hideElement');
                 correctEl.classList.add('hideElement');
@@ -281,9 +281,9 @@ choices.forEach(choiceMade => {
             VerdictEl.classList.remove('hideElement');
             incorrectEl.classList.remove('hideElement');
 
-            // What happens if they answer incorrectly: Lost of time- thought you knew me, LOL! //
+            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
             score --;
-            timer-=3;
+            timer -= 3;
             
             pause(() => {
                 VerdictEl.classList.add('hideElement');
@@ -297,6 +297,9 @@ choices.forEach(choiceMade => {
     })    
 });
 
+// Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
+qScore.innerHTML = ('Score: ' + score);
+        
 // Sign Your Name! //
 function johnHancock() {
     if (signEl.value < 1) {
@@ -316,7 +319,7 @@ function johnHancock() {
             }
 
         winner.push(scoreSubmittion)
-        // Ordering local users (lu). //
+        // Ordering local users (quiz takers on same device). //
         winner.sort( (a,b) => b.totalScore - a.totalScore);
 
         winner.splice(5);

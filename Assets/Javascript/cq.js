@@ -5,10 +5,9 @@ const incorrectEl = document.getElementById('incorrect'); // CONSIDER USING SWIT
 const VerdictEl = document.getElementById('Verdict');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
 const totalEl = document.getElementById('total');
-const signEl = document.getElementById('#sign');
+const signEl = document.getElementById('sign');
 const endQuizEl = document.getElementById('endQuiz');
 const timerCountdown = document.getElementById('quizTime');
-const QEl = document.getElementById('Q');
 const quizEl = document.getElementById('quiz');
 // CONSIDER USING SWITCH STATEMENTS OR COUNTER INSTEAD OF CONST CHOICES. //
 const choices = Array.from(document.querySelectorAll('.choices'));
@@ -162,6 +161,13 @@ const questions = [{
 
     A: 2,
 },]
+var QEl = document.getElementById('Q');
+var choice1El = document.getElementById('choice1');
+var choice2El = document.getElementById('choice2');
+var choice3El = document.getElementById('choice3');
+var choice4El = document.getElementById('choice4');
+var choice5El = document.getElementById('choice5');
+
 // Variables for Scoring Functions and Operations. //
 const winner =  JSON.parse(localStorage.getItem('winner')) || [];
 var score = 0;
@@ -201,15 +207,27 @@ function beginQuiz() {
     // DON'T FORGET to Call countdown timer. //
     setInterval(countdown ,1000);
 
-    // Randomize questions. //
-    randomIndex = 0;
-    randomQ = questions.sort(() => Math.random() - .3);
-    newQ(randomQ, randomIndex);
+    function getQuestions {
+        var questionsIndex = 0;
+        var renderQnA = questions[questionsIndex];
+        QEl.textContent = renderQnA.question;
+        choice1EL.textContent = renderQnA.choice1;
+        choice2EL.textContent = renderQnA.choice2;
+        choice3EL.textContent = renderQnA.choice3;
+        choice4EL.textContent = renderQnA.choice4;
+        choice5EL.textContent = renderQnA.choice5;
+
+        console.log(getQuestions);
+        return getQuestions;
+    };
     
     console.log(beginQuiz);
 }; 
 
 // Function to randomize quesions. //
+randomIndex = 0;
+randomQ = questions.sort(() => Math.random() - .3);
+newQ(randomQ, randomIndex);
 function newQ(randomQ, randomIndex) {
     if (randomIndex >= randomQ.length) {
         resetTimer(count)

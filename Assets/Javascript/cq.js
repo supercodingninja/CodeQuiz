@@ -182,6 +182,7 @@ let highScoresIndex = 0;
 let qScore;
 let count; // Will define in function. //
 let timer = 300;
+let timerID;
 
 // <==========================================Getting to the Functions===================================================> //
 // Function for Timer Countdown. //
@@ -193,9 +194,12 @@ function countdown() {
         instructEl.classList.add('hideElement'); // Page's Indtruction. //
         quizEl.classList.remove('hideElement'); // Page's Quiz. //
         endQuizEl.classList.add('hideElement'); // Page' Score List. //
+
+        timerID = setInterval(countdown ,1000);
+        clearInterval(timerID);
         
         console.log(timer);
-        };
+    };
     
     console.log(countdown);
 };
@@ -207,7 +211,7 @@ function beginQuiz() {
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
    
     // DON'T FORGET to Call countdown timer. //
-    setInterval(countdown ,1000);
+    timerID;
 
     function getQnA() {
         var QnAIndex = 0;

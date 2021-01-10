@@ -1,6 +1,5 @@
 body {
     /* background-image: url(Assets/Media/seattle-background-640x415.jpg);  Doesn't show or work.  I use the <body> in HTML, and it worked. */
-    min-width: 1250px;
     color:rgb(221, 221, 221);
   }
 

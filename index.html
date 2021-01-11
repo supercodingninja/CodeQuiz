@@ -10,16 +10,15 @@
          <link rel="preconnect" href="https://fonts.gstatic.com">
          <link href="https://fonts.googleapis.com/css2?family=Dynalight&display=swap" rel="stylesheet">
         <!-- My Awesome, Cool, and Stylish Favicon -->
-        <link rel="shortcut icon" type="image/png" href="Assets/Media/apple-touch-icon.png">
+        <link rel="shortcut icon" type="image/png" href="./Assets/Media/apple-touch-icon.png">
         <!-- My CSS Hardcode -->
-        <link rel="stylesheet" type="text/css" href="Assets/CSS/cq.css">
+        <link rel="stylesheet" type="text/css" href="./Assets/CSS/cq.css">
 
         <!-- Browser Tab Title -->
         <title>Do You Know 'Fred?'</title>
     </head>
 
-    <!-- <body> -->
-    <body style="background-image: url(Assets/Media/seattle-background-640x415.jpg); background-repeat: no-repeat; background-size: cover;">
+    <body >
 
         <header>
             <h1>Somewhere in Seattle, is a guy named, 'Fred'...</h1>
@@ -28,13 +27,15 @@
         <main class="quizContainer">
             <!-- Quiz instructions. -->
             <section id="instruct" class="intro">
-                <h2 id="title" style="background-image: url(Assets/Media/dykf.jpg);  background-repeat: no-repeat; border: 1px; border-radius: 50%; background-position: center; background-size: 100;">Do You Know 'Fred?'</h2>
+                <h2 id="title">Do You Know 'Fred?'</h2>
                 
                 <p>How well do you know him?  Test your luck, with speed and accuracy!<br>Your time left & the amount of answers correct, all determine your score.<br>Choose the Best option, available. Any incorrect answer takes away time and score.<br>Answer correctly, and you will be rewarded more time and points!</p>
 
-                <button id="knock" class="knock" onclick="beginQuiz()">Knock-knock</button>
+                <button id="knock">Knock-knock</button>
             </section>
 
+
+            <!-- Here comes the quiz.  Do You Know Me! -->
             <section id="quiz" class="hideElement">
                 <!-- My various questions should append here. -->
                 <h3 id="Q"></h3>
@@ -47,32 +48,32 @@
                     <div><button class="choices" id="choice4" data-number="4"></button></div>
                     <div><button class="choices" id="choice5" data-number="5"></button></div>
                 </div>
+            </section>
 
 
-                <!-- Timer, Score, and High Score headers. -->
-                <header id="quizHeader" class="hideElement">
-                    <a href="#" id="goToScoreboard">Fred's Chaps</a>
+            <!-- Timer, Score, and High Score headers. -->
+            <section id="quizHeader" class="hideElement">
+                <a href="#" id="goToScoreboard">Fred's Chaps</a>
 
-                    <div id="quizTime">Timer: </div>
-                    
-                    <div id="qScore">Score: </div>
-                </header>
+                <div id="quizTime">Timer:</div>
+                
+                <div id="qScore">Score:</div>
             </section>
 
 
             <!-- Evaluation of user's answer. -->
             <section id="Verdict" class="hideElement">
-                <p id="correct" class="hideElement" style="background-image: url('Assets/Media/choiceReactions_future project/really.jpg'); background-repeat: no-repeat; background-size: contain; background-position: center;">Correct!</p>
+                <p id="correct" class="hideElement">Correct!</p>
 
-                <p id="incorrect" class="hideElement" style="background-image: url('Assets/Media/choiceReactions_future project/noWay.jpg'); background-repeat: no-repeat; background-size: contain; background-position: center;">What?! That is so, not Me!</p>
+                <p id="incorrect" class="hideElement">What?! That is so, not Me!</p>
             </section>
 
 
             <!-- Buttons for End of quiz/Out of time -->
             <section id="endQuiz" class="hideElement">
                 <input type="text" id="sign" placeholder="Own it! Put your the initials to your `John Hancock,` here (first letters of First and Last name).">
-                <button id="total" class="ownIt">Submit Quiz Score</button>
-                <button id="redoBtn" class="ownIt" onclick="beginQuiz()">Shh! Redo...</button>
+                <!-- <button id="total" class="ownIt">Submit Quiz Score</button>
+                <button id="redoBtn" class="ownIt" onclick="beginQuiz()">Shh! Redo...</button> -->
             </section>
 
 

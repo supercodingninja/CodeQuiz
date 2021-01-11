@@ -4,13 +4,14 @@ const correctEl = document.getElementById('correct'); // CONSIDER USING SWITCH S
 const incorrectEl = document.getElementById('incorrect'); // CONSIDER USING SWITCH STATEMENTS, INSTEAD. //
 const VerdictEl = document.getElementById('Verdict');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
+const quizHeaderEl = document.getElementById('quizHeader');
 const totalEl = document.getElementById('total');
 const signEl = document.getElementById('sign');
 const endQuizEl = document.getElementById('endQuiz');
 const timerCountdown = document.getElementById('quizTime');
 const quizEl = document.getElementById('quiz');
 // CONSIDER USING SWITCH STATEMENTS OR COUNTER INSTEAD OF CONST CHOICES. //
-const choices = Array.from(document.querySelectorAll('.choices'));
+const choices = document.querySelectorAll('.choices');
 const leadersScoresEl = document.querySelector('#leadersScores');
 const usersListEl = document.querySelector('#usersList');
 const scoreContainerEl = document.querySelector('#scoreContainer');
@@ -160,7 +161,9 @@ const questions = [{
     choice5: "False, He likes King Kong.",
 
     A: 2,
-},]
+}]
+
+var QnAIndex = 0;
 var QEl = document.getElementById('Q');
 var choice1El = document.getElementById('choice1');
 var choice2El = document.getElementById('choice2');
@@ -188,20 +191,21 @@ let timerID;
 // Function for Timer Countdown. //
 function countdown() { 
     timer--;
-    timerCountdown.textContent = ('Timer: ' + timer);
-    
+    quizHeaderEl.textContent = 'Timer: ' + timer;
+    console.log(timer);
     if (timer <= 0) {
-        instructEl.classList.add('hideElement'); // Page's Indtruction. //
-        quizEl.classList.remove('hideElement'); // Page's Quiz. //
-        endQuizEl.classList.add('hideElement'); // Page' Score List. //
+    //     instructEl.classList.add('hideElement'); // Page's Indtruction. //
+    //   // Page's Quiz. //
+    //     endQuizEl.classList.add('hideElement'); // Page' Score List. //
 
-        timerID = setInterval(countdown ,1000);
+        // quizHeaderEl.remove('hideElement');
+       
         clearInterval(timerID);
         
         console.log(timer);
     };
     
-    console.log(countdown);
+
 };
 
 // Function to start my quiz. //
@@ -209,26 +213,25 @@ function beginQuiz() {
     instructEl.classList.add('hideElement'); // Page's Indtruction. //
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
-   
+    quizHeaderEl.classList.remove('hideElement'); // 
     // DON'T FORGET to Call countdown timer. //
-    timerID;
-
-    function getQnA() {
-        var QnAIndex = 0;
-        var renderQnA = questions[QnAIndex];
-        QEl.textContent = renderQnA.question;
-        choice1EL.textContent = renderQnA.choice1;
-        choice2EL.textContent = renderQnA.choice2;
-        choice3EL.textContent = renderQnA.choice3;
-        choice4EL.textContent = renderQnA.choice4;
-        choice5EL.textContent = renderQnA.choice5;
-
-        console.log(getQnA);
-        return getQnA;
-    };
-    
-    console.log(beginQuiz);
+     
+    getQnA();
+    timerID = setInterval(countdown ,1000);
 }; 
+
+function getQnA() {
+   
+    var renderQnA = questions[QnAIndex];
+    QEl.textContent = renderQnA.question;
+    choice1El.textContent = renderQnA.choice1;
+    choice2El.textContent = renderQnA.choice2;
+    choice3El.textContent = renderQnA.choice3;
+    choice4El.textContent = renderQnA.choice4;
+    choice5El.textContent = renderQnA.choice5;
+
+   
+};
 
 // Function to randomize quesions. //
 randomIndex = 0;
@@ -237,72 +240,72 @@ newQ(randomQ, randomIndex);
 function newQ(randomQ, randomIndex) {
     if (randomIndex >= randomQ.length) {
         resetTimer(count)
-        quizEl.classList.add('hideElement');
-        endQuizEl.classList.remove('hideElement')
+        // quizEl.classList.add('hideElement');
+        // endQuizEl.classList.remove('hideElement')
         return;
         console.log(randomIndex >= randomQ.length); // Ugh! Ineed to test: how?  Test in application, at this point. //
     };
     
     var qAsked = randomQ[randomIndex];
-    quizEl.innerText = qAsked.question;
+  //  quizEl.innerText = qAsked.question;
     
     console.log(newQ);
 };
  
-// Evaluation of User Choices. //
-choices.forEach(choiceMade => {
-    let number = choiceMade.dataset['number'];
-    choiceMade.innerText = number + ' ' + qAsked['choiceMade' + number];
-});
+// // Evaluation of User Choices. //
+// choices.forEach(choiceMade => {
+//     let number = choiceMade.dataset['number'];
+//     choiceMade.innerText = number + ' ' + qAsked['choiceMade' + number];
+// });
 
-choices.forEach(choiceMade => {
-    choiceMade.addEventListener('click', event => {
-        event.preventDefault();
-        const userChoice = event.target.dataset.number;
+// choices.forEach(choiceMade => {
+//     choiceMade.addEventListener('click', event => {
+//         event.preventDefault();
+//         const userChoice = event.target.dataset.number;
 
-        if (userChoice == questions[randomIndex].A) {
-            VerdictEl.classList.remove('hideElement');
-            correctEl.classList.remove('hideElement');
+//         if (userChoice == questions[randomIndex].A) {
+//             VerdictEl.classList.remove('hideElement');
+//             correctEl.classList.remove('hideElement');
             
-            // Rewards for scoring. //
-            score += 2;
-            // score ++; //
-            timer += 3;
+//             // Rewards for scoring. //
+//             score += 2;
+//             // score ++; //
+//             timer += 3;
             
-            // Hold the press: was the user right, or WRAAAANG, LOL! //
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                correctEl.classList.add('hideElement');
+//             // Hold the press: was the user right, or WRAAAANG, LOL! //
+//             pause(() => {
+//                 VerdictEl.classList.add('hideElement');
+//                 correctEl.classList.add('hideElement');
 
-                console.log(pause);
-            },
+//                 console.log(pause);
+//             },
             
-            1000);
+//             1000);
 
-            randomIndex++;
-            newQ(randomQ, randomIndex);
-        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-            VerdictEl.classList.remove('hideElement');
-            incorrectEl.classList.remove('hideElement');
+//             randomIndex++;
+//             newQ(randomQ, randomIndex);
+//         } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+//             VerdictEl.classList.remove('hideElement');
+//             incorrectEl.classList.remove('hideElement');
 
-            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
-            score --;
-            timer -= 3;
+//             // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
+//             score --;
+//             timer -= 3;
             
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                incorrectEl.classList.add('hideElement');
+//             pause(() => {
+//                 VerdictEl.classList.add('hideElement');
+//                 incorrectEl.classList.add('hideElement');
 
-                console.log(pause);
-            },
+//                 console.log(pause);
+//             },
             
-            1000);
-        }
-    })    
-});
+//             1000);
+//         }
+//     })    
+// });
 
-// Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-qScore.innerHTML = ('Score: ' + score);
+// // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
+// qScore.innerHTML = ('Score: ' + score);
         
 // Sign Your Name! //
 function johnHancock() {
@@ -351,14 +354,14 @@ function johnHancock() {
 
 // Add Event Listeners, here. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
-// Redo Quiz. //
-redoBtnEl.addEventListener('click', beginQuiz);
+// // Redo Quiz. //
+// redoBtnEl.addEventListener('click', beginQuiz);
 topEl.addEventListener('click', beginQuiz);
 // This event listener will allow the user to store their score and add their initials. //
-totalEl.addEventListener('click', johnHancock);
+// totalEl.addEventListener('click', johnHancock);
 goToScoreboardEl.addEventListener('click', () => {
     instructEl.classList.add('hideElement');
-    quizEl.classList.add('hideElement');
+    // quizEl.classList.add('hideElement');
     endQuizEl.classList.add('hideElement');
     scoreContainerEl.classList.remove('hideElement');
 

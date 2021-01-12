@@ -1,4 +1,3 @@
-// I Taking A Vanilla Javascript Approach. //
 // <=============================================== Declaring Global Variables ==========================================> //
 const instructEl = document.getElementById('instruct');
 const introBtnEl = document.getElementById('knock');

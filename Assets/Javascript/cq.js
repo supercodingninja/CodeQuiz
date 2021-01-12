@@ -1,25 +1,24 @@
+// I Taking A Vanilla Javascript Approach. //
+// <=============================================== Declaring Global Variables ==========================================> //
 const instructEl = document.getElementById('instruct');
 const introBtnEl = document.getElementById('knock');
-const correctEl = document.getElementById('correct'); // CONSIDER USING SWITCH STATEMENTS, INSTEAD. //
-const incorrectEl = document.getElementById('incorrect'); // CONSIDER USING SWITCH STATEMENTS, INSTEAD. //
-const VerdictEl = document.getElementById('Verdict');
-const goToScoreboardEl = document.getElementById('goToScoreboard');
+const redoBtnEl = document.getElementById('redoBtn'); //JUST CALL FUNCTION BEGINQUIZ(); //
+const topThemBtnEl = document.getElementById('top'); //JUST CALL FUNCTION BEGINQUIZ(); //
+const quizEl = document.getElementById('quiz');
+const timerCountdown = document.getElementById('quizTime');
 const quizHeaderEl = document.getElementById('quizHeader');
+const VerdictEl = document.getElementById('Verdict');
+const correctEl = document.getElementById('correct');
+const incorrectEl = document.getElementById('incorrect');
+const endQuizEl = document.getElementById('endQuiz');
 const totalEl = document.getElementById('total');
 const signEl = document.getElementById('sign');
-const endQuizEl = document.getElementById('endQuiz');
-const timerCountdown = document.getElementById('quizTime');
-const quizEl = document.getElementById('quiz');
+const goToScoreboardEl = document.getElementById('goToScoreboard');
 
-// CONSIDER USING SWITCH STATEMENTS OR COUNTER INSTEAD OF CONST CHOICES. //
 const choices = document.querySelectorAll('.choices');
 const leadersScoresEl = document.querySelector('#leadersScores');
 const usersListEl = document.querySelector('#usersList');
 const scoreContainerEl = document.querySelector('#scoreContainer');
-
-//JUST CALL FUNCTION BEGINQUIZ(); BUT USE ONCLICK IN HTML: K.I.S. //
-const redoBtnEl = document.getElementById('redoBtn');
-const topEl = document.querySelector('#top');
 
 // Q & A: these are my quiz questions, answers (including correct options to select). //
 const questions = [{
@@ -164,7 +163,6 @@ const questions = [{
     A: 2,
 }]
 
-var QnAIndex = 0;
 var QEl = document.getElementById('Q');
 var choice1El = document.getElementById('choice1');
 var choice2El = document.getElementById('choice2');
@@ -173,26 +171,27 @@ var choice4El = document.getElementById('choice4');
 var choice5El = document.getElementById('choice5');
 
 // Variables for Scoring Functions and Operations. //
-const winner =  JSON.parse(localStorage.getItem('winner')) || [];
-var score = 0;
-var quizTakers = [];
-
-// These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
-let qAsked;
-let randomIndex;
-let randomQ;
-let userIndex = 0;
-
+const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
+let score = 0;
+let quizTakers = [ ];
 let highScoresIndex = 0;
-let qScore;
-let count; // Will define in function. //
 let timer = 300;
 let timerID;
+let qScore;
+let count; // Will define in function. //
 
-// <==========================================Getting to the Functions===================================================> //
+// These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
+let QnAIndex = 0;
+let qAsked = randomQ[randomIndex];
+let randomIndex = 0;
+let randomQ = questions.sort(() => Math.random() - .3);
+let userIndex = 0;
+
+
+// <=================================== Getting to the Functions' Definitions ===========================================> //
 // Function for Timer Countdown. //
 function countdown() { 
-    timer--;
+    timer -- ;
     quizHeaderEl.textContent = 'Timer: ' + timer;
 
     if (timer <= 0) {
@@ -206,40 +205,39 @@ function countdown() {
         
         console.log(timer);
     };
+
+    console.log(countdown);
 };
+
 
 // Function to render my Questions and Answers. //
 function getQnA() {
-   
-    var renderQnA = questions[QnAIndex];
+    let renderQnA = questions[QnAIndex];
     QEl.textContent = renderQnA.Q;
     choice1El.textContent = renderQnA.choice1;
     choice2El.textContent = renderQnA.choice2;
     choice3El.textContent = renderQnA.choice3;
     choice4El.textContent = renderQnA.choice4;
-    choice5El.textContent = renderQnA.choice5;
-
-   
+    choice5El.textContent = renderQnA.choice5; 
 };
 
-// Function to randomize quesions. //
-// This function appears to be working: DON'T TOUCH! //
-randomIndex = 0;
-randomQ = questions.sort(() => Math.random() - .3);
-// console.log(randomQ + "line-229"); | console.log(`${JSON.stringify(randomQ)} line-229`) //
-newQ(randomQ, randomIndex);
+
+// Function to randomize quesions. | This function appears to be working: DON'T TOUCH! //
 function newQ(randomQ, randomIndex) {
-    if (randomIndex >= randomQ.length) {
-        resetTimer(count)
+    
+    // console.log(randomQ + "line-224"); | console.log(`${JSON.stringify(randomQ)} line-224`) //
+    
+    if (randomIndex >= randomQ.length) { 
+        resetTimer(count);
 
         return;
     };
     
-     qAsked = randomQ[randomIndex];
-   quizEl.innerText = qAsked.Q;
+    QEl.innerText = qAsked.Q;
     
     console.log(newQ);
 };
+
 
 // Function to start my quiz. //
 function beginQuiz() {
@@ -249,65 +247,16 @@ function beginQuiz() {
     quizHeaderEl.classList.remove('hideElement'); // 
     // DON'T FORGET to Call countdown timer. //
      
+    // Calling my functions. //
+    newQ(randomQ, randomIndex);
     getQnA();
+
     timerID = setInterval(countdown ,1000);
+
+    // console.log(beginQuiz); //
 }; 
- 
-// // Evaluation of User Choices. //
-choices.forEach(choiceMade => {
-    let number = choiceMade.dataset['number'];
-    choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
-});
 
-choices.forEach(choiceMade => {
-    choiceMade.addEventListener('click', event => {
-        event.preventDefault();
-        const userChoice = event.target.dataset.number;
-        console.log(`Button pressed ${userChoice}`);
-        if (userChoice == questions[randomIndex].A) {
-            VerdictEl.classList.remove('hideElement');
-            correctEl.classList.remove('hideElement');
-            
-            // Rewards for scoring. //
-            score += 2;
-            // score ++; //
-            timer += 3;
-            
-            // Hold the press: was the user right, or WRAAAANG, LOL! //
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                correctEl.classList.add('hideElement');
 
-                console.log(pause);
-            },
-            
-            1000);
-
-            randomIndex++;
-            newQ(randomQ, randomIndex);
-        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-            VerdictEl.classList.remove('hideElement');
-            incorrectEl.classList.remove('hideElement');
-
-            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
-            score --;
-            timer -= 3;
-            
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                incorrectEl.classList.add('hideElement');
-
-                console.log(pause);
-            },
-            
-            1000);
-        }
-    })    
-});
-
-// // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-// qScore.innerHTML = ('Score: ' + score);
-        
 // Sign Your Name! //
 function johnHancock() {
     if (signEl.value < 1) {
@@ -353,16 +302,80 @@ function johnHancock() {
     console.log(johnHancock);
 };
 
-// Add Event Listeners, here. //
+ 
+// Evaluation of User Choices. //
+choices.forEach(choiceMade => {
+    let number = choiceMade.dataset['number'];
+    choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
+});
+
+choices.forEach(choiceMade => {
+    choiceMade.addEventListener('click', event => {
+        event.preventDefault();
+        const userChoice = event.target.dataset.number;
+        console.log(`Button pressed ${userChoice}`);
+
+        if (userChoice == questions[randomIndex].A) {
+            VerdictEl.classList.remove('hideElement');
+            correctEl.classList.remove('hideElement');
+            
+            // Rewards for scoring. //
+            score += 2;
+            // score ++; //
+            timer += 3;
+            
+            // Hold the press: was the user right, or WRAAAANG, LOL! //
+            pause(() => {
+                VerdictEl.classList.add('hideElement');
+                correctEl.classList.add('hideElement');
+
+                console.log(pause);
+            });
+
+            randomIndex++;
+            newQ(randomQ, randomIndex);
+        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+            VerdictEl.classList.remove('hideElement');
+            incorrectEl.classList.remove('hideElement');
+
+            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
+            score --;
+            timer -= 3;
+            
+            pause(() => {
+                VerdictEl.classList.add('hideElement');
+                incorrectEl.classList.add('hideElement');
+
+                console.log(pause);
+            },
+            
+            1000);
+        }
+    })    
+});
+
+
+// // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
+// qScore.innerHTML = ('Score: ' + score);
+
+
+// <============================================ Adding Event Listeners. ================================================> //
+// Begin Quiz Button. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
-// // Redo Quiz. //
-// redoBtnEl.addEventListener('click', beginQuiz);
-topEl.addEventListener('click', beginQuiz);
+
+// Redo Quiz Button. //
+redoBtnEl.addEventListener('click', beginQuiz);
+
+// Higher Rank and Ego Button. //
+topThemBtnEl.addEventListener('click', beginQuiz);
+
 // This event listener will allow the user to store their score and add their initials. //
-// totalEl.addEventListener('click', johnHancock);
+totalEl.addEventListener('click', johnHancock);
+
+// Ranking Scores. //
 goToScoreboardEl.addEventListener('click', () => {
     instructEl.classList.add('hideElement');
-    // quizEl.classList.add('hideElement');
+    quizEl.classList.add('hideElement'); // I may not need this line of code. //
     endQuizEl.classList.add('hideElement');
     scoreContainerEl.classList.remove('hideElement');
 

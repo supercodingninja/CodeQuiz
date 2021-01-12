@@ -181,7 +181,7 @@ let count; // Will define in function. //
 
 // These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
 let QnAIndex = 0;
-let qAsked = randomQ[randomIndex];
+let qAsked;
 let randomIndex = 0;
 let randomQ = questions.sort(() => Math.random() - .3);
 let userIndex = 0;
@@ -231,6 +231,8 @@ function newQ(randomQ, randomIndex) {
 
         return;
     };
+
+    let qAsked = randomQ[randomIndex];
     
     QEl.innerText = qAsked.Q;
     

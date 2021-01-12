@@ -10,6 +10,7 @@ const signEl = document.getElementById('sign');
 const endQuizEl = document.getElementById('endQuiz');
 const timerCountdown = document.getElementById('quizTime');
 const quizEl = document.getElementById('quiz');
+
 // CONSIDER USING SWITCH STATEMENTS OR COUNTER INSTEAD OF CONST CHOICES. //
 const choices = document.querySelectorAll('.choices');
 const leadersScoresEl = document.querySelector('#leadersScores');
@@ -175,6 +176,7 @@ var choice5El = document.getElementById('choice5');
 const winner =  JSON.parse(localStorage.getItem('winner')) || [];
 var score = 0;
 var quizTakers = [];
+
 // These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
 let qAsked;
 let randomIndex;
@@ -192,20 +194,51 @@ let timerID;
 function countdown() { 
     timer--;
     quizHeaderEl.textContent = 'Timer: ' + timer;
-    console.log(timer);
-    if (timer <= 0) {
-    //     instructEl.classList.add('hideElement'); // Page's Indtruction. //
-    //   // Page's Quiz. //
-    //     endQuizEl.classList.add('hideElement'); // Page' Score List. //
 
-        // quizHeaderEl.remove('hideElement');
+    if (timer <= 0) {
+        instructEl.classList.add('hideElement'); // Page's Indtruction. //
+      
+        endQuizEl.classList.add('hideElement'); // Page' Score List. //
+
+        quizHeaderEl.remove('hideElement'); // Page's Quiz. //
        
         clearInterval(timerID);
         
         console.log(timer);
     };
-    
+};
 
+// Function to render my Questions and Answers. //
+function getQnA() {
+   
+    var renderQnA = questions[QnAIndex];
+    QEl.textContent = renderQnA.Q;
+    choice1El.textContent = renderQnA.choice1;
+    choice2El.textContent = renderQnA.choice2;
+    choice3El.textContent = renderQnA.choice3;
+    choice4El.textContent = renderQnA.choice4;
+    choice5El.textContent = renderQnA.choice5;
+
+   
+};
+
+// Function to randomize quesions. //
+// This function appears to be working: DON'T TOUCH! //
+randomIndex = 0;
+randomQ = questions.sort(() => Math.random() - .3);
+// console.log(randomQ + "line-229"); | console.log(`${JSON.stringify(randomQ)} line-229`) //
+newQ(randomQ, randomIndex);
+function newQ(randomQ, randomIndex) {
+    if (randomIndex >= randomQ.length) {
+        resetTimer(count)
+
+        return;
+    };
+    
+     qAsked = randomQ[randomIndex];
+   quizEl.innerText = qAsked.Q;
+    
+    console.log(newQ);
 };
 
 // Function to start my quiz. //
@@ -219,90 +252,58 @@ function beginQuiz() {
     getQnA();
     timerID = setInterval(countdown ,1000);
 }; 
-
-function getQnA() {
-   
-    var renderQnA = questions[QnAIndex];
-    QEl.textContent = renderQnA.question;
-    choice1El.textContent = renderQnA.choice1;
-    choice2El.textContent = renderQnA.choice2;
-    choice3El.textContent = renderQnA.choice3;
-    choice4El.textContent = renderQnA.choice4;
-    choice5El.textContent = renderQnA.choice5;
-
-   
-};
-
-// Function to randomize quesions. //
-randomIndex = 0;
-randomQ = questions.sort(() => Math.random() - .3);
-newQ(randomQ, randomIndex);
-function newQ(randomQ, randomIndex) {
-    if (randomIndex >= randomQ.length) {
-        resetTimer(count)
-        // quizEl.classList.add('hideElement');
-        // endQuizEl.classList.remove('hideElement')
-        return;
-        console.log(randomIndex >= randomQ.length); // Ugh! Ineed to test: how?  Test in application, at this point. //
-    };
-    
-    var qAsked = randomQ[randomIndex];
-  //  quizEl.innerText = qAsked.question;
-    
-    console.log(newQ);
-};
  
 // // Evaluation of User Choices. //
-// choices.forEach(choiceMade => {
-//     let number = choiceMade.dataset['number'];
-//     choiceMade.innerText = number + ' ' + qAsked['choiceMade' + number];
-// });
+choices.forEach(choiceMade => {
+    let number = choiceMade.dataset['number'];
+    choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
+});
 
-// choices.forEach(choiceMade => {
-//     choiceMade.addEventListener('click', event => {
-//         event.preventDefault();
-//         const userChoice = event.target.dataset.number;
-
-//         if (userChoice == questions[randomIndex].A) {
-//             VerdictEl.classList.remove('hideElement');
-//             correctEl.classList.remove('hideElement');
+choices.forEach(choiceMade => {
+    choiceMade.addEventListener('click', event => {
+        event.preventDefault();
+        const userChoice = event.target.dataset.number;
+        console.log(`Button pressed ${userChoice}`);
+        if (userChoice == questions[randomIndex].A) {
+            VerdictEl.classList.remove('hideElement');
+            correctEl.classList.remove('hideElement');
             
-//             // Rewards for scoring. //
-//             score += 2;
-//             // score ++; //
-//             timer += 3;
+            // Rewards for scoring. //
+            score += 2;
+            // score ++; //
+            timer += 3;
             
-//             // Hold the press: was the user right, or WRAAAANG, LOL! //
-//             pause(() => {
-//                 VerdictEl.classList.add('hideElement');
-//                 correctEl.classList.add('hideElement');
+            // Hold the press: was the user right, or WRAAAANG, LOL! //
+            pause(() => {
+                VerdictEl.classList.add('hideElement');
+                correctEl.classList.add('hideElement');
 
-//                 console.log(pause);
-//             },
+                console.log(pause);
+            },
             
-//             1000);
+            1000);
 
-//             randomIndex++;
-//             newQ(randomQ, randomIndex);
-//         } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-//             VerdictEl.classList.remove('hideElement');
-//             incorrectEl.classList.remove('hideElement');
+            randomIndex++;
+            newQ(randomQ, randomIndex);
+        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+            VerdictEl.classList.remove('hideElement');
+            incorrectEl.classList.remove('hideElement');
 
-//             // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
-//             score --;
-//             timer -= 3;
+            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
+            score --;
+            timer -= 3;
             
-//             pause(() => {
-//                 VerdictEl.classList.add('hideElement');
-//                 incorrectEl.classList.add('hideElement');
+            pause(() => {
+                VerdictEl.classList.add('hideElement');
+                incorrectEl.classList.add('hideElement');
 
-//                 console.log(pause);
-//             },
+                console.log(pause);
+            },
             
-//             1000);
-//         }
-//     })    
-// });
+            1000);
+        }
+    })    
+});
 
 // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
 // qScore.innerHTML = ('Score: ' + score);

@@ -14,12 +14,21 @@ const totalEl = document.getElementById('total');
 const signEl = document.getElementById('sign');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
 
+const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
+
 const leadersScoresEl = document.querySelector('#leadersScores');
 const usersListEl = document.querySelector('#usersList');
 const scoreContainerEl = document.querySelector('#scoreContainer');
-const choices = document.querySelectorAll('.choices');
+const choices = document.querySelectorAll('.choices'); 
 
- 
+// Variables to created to help me render Questions and Options.  //
+var QEl = document.getElementById('Q');
+var choice1El = document.getElementById('choice1');
+var choice2El = document.getElementById('choice2');
+var choice3El = document.getElementById('choice3');
+var choice4El = document.getElementById('choice4');
+var choice5El = document.getElementById('choice5');
+
 // Q & A: these are my quiz questions, answers (including correct options to select). //
 let questions = [{
     Q: "What's an instrument `'Fred'` plays?",
@@ -163,15 +172,7 @@ let questions = [{
     A: 2,
 }]
 
-var QEl = document.getElementById('Q');
-var choice1El = document.getElementById('choice1');
-var choice2El = document.getElementById('choice2');
-var choice3El = document.getElementById('choice3');
-var choice4El = document.getElementById('choice4');
-var choice5El = document.getElementById('choice5');
-
 // Variables for Scoring Functions and Operations. //
-const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
 let score = 0;
 let quizTakers = [ ];
 let highScoresIndex = 0;
@@ -181,10 +182,11 @@ let qScore;
 let count; // Will define in function. //
 
 // These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
+let randomQ = questions.sort(() => Math.random() - .3);
 let QnAIndex = 0;
 let qAsked;
 let randomIndex = 0;
-let randomQ = questions.sort(() => Math.random() - .3);
+
 let userIndex = 0;
 
 
@@ -223,31 +225,37 @@ function getQnA() {
 };
 
 
-
 // Creating function to go the next question. //
 function nextQuestion() {
 
     let dataNumber =  parseInt(this.getAttribute("data-number"));
-      console.log(dataNumber,questions[QnAIndex].A);
+      console.log(dataNumber, questions[QnAIndex].A);
 
       VerdictEl.classList.remove('hideElement');
         if (dataNumber === questions[QnAIndex].A) {
-                          
-                correctEl.classList.remove('hideElement');
+            
+            // Rewards for scoring. //
+            score += 2;
+            timer += 3;              
+            correctEl.classList.remove('hideElement');
           
-        } else{
+        } 
+        
+        else {
             
-            
-                incorrectEl.classList.remove('hideElement');
+            // Deductions for incorrect answer. //
+            score --;
+            timer -= 3;
+            incorrectEl.classList.remove('hideElement');
         }
    
+    // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
+    // qScore.innerHTML = ('Score: ' + score);
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
  
-    setTimeout(getQnA, 10000)
-    
-   
-}
+    setTimeout(getQnA, 10000)  
+};
 
 
 // Function to randomize quesions. | This function appears to be working: DON'T TOUCH! //
@@ -283,150 +291,92 @@ function beginQuiz() {
 
     timerID = setInterval(countdown ,1000);
 
-    // console.log(beginQuiz); //
+    console.log(beginQuiz);
 }; 
 
 
-// Evaluation of User Choices. //
-// choices.forEach(choiceMade => {
-//     let number = choiceMade.dataset['number'];
-//     choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
-// });
-
-// choices.forEach(choiceMade => {
-//     choiceMade.addEventListener('click', event => {
-//         event.preventDefault();
-//         const userChoice = event.target.dataset.number;
-//         console.log(`Button pressed ${userChoice}`);
-
-//         if (userChoice == questions[randomIndex].A) {
-//             VerdictEl.classList.remove('hideElement');
-//             correctEl.classList.remove('hideElement');
-            
-//             // Rewards for scoring. //
-//             score += 2;
-//             timer += 3;
-            
-//             // Hold the press: was the user right, or WRAAAANG, LOL! //
-//             pause(() => {
-//                 VerdictEl.classList.add('hideElement');
-//                 correctEl.classList.add('hideElement');
-
-//                 console.log(pause);
-//             });
-
-//             randomIndex++;
-//             newQ(randomQ, randomIndex);
-//         } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-//             VerdictEl.classList.remove('hideElement');
-//             incorrectEl.classList.remove('hideElement');
-
-//             // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
-//             score --;
-//             timer -= 3;
-            
-//             pause(() => {
-//                 VerdictEl.classList.add('hideElement');
-//                 incorrectEl.classList.add('hideElement');
-
-//                 console.log(pause);
-//             },
-            
-//             1000);
-//         }
-//     })    
-// });
-
-
-// // Sign Your Name! //
-// function johnHancock() {
-//     if (signEl.value < 1) {
+// Sign Your Name! //
+function johnHancock() {
+    if (signEl.value < 1) {
         
-//         return;
+        return;
 
-//     } else {
+    } else {
 
-//         qScore.textContent = score;
+        qScore.textContent = score;
 
-//         // Maybe... DEFINATELY NEED TO TEST. //
-//         let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
-//             user: signEl.value.toUpperCase(),
+        // Maybe... DEFINATELY NEED TO TEST. //
+        let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
+            user: signEl.value.toUpperCase(),
             
-//             // The total score is adding var 'score + timer': this is the user's score + the time left. //
-//             totalScore: score + timer,
-//             }
+            // The total score is adding var 'score + timer': this is the user's score + the time left. //
+            totalScore: score + timer,
+            }
 
-//         winner.push(scoreSubmittion)
-//         // Ordering local users (quiz takers on same device). //
-//         winner.sort( (a,b) => b.totalScore - a.totalScore);
+        winner.push(scoreSubmittion)
+        // Ordering local users (quiz takers on same device). //
+        winner.sort( (a,b) => b.totalScore - a.totalScore);
 
-//         winner.splice(5);
+        winner.splice(5);
 
-//         localStorage.setItem('winner', JSON.stringify(winner));
+        localStorage.setItem('winner', JSON.stringify(winner));
 
-//         highscoreEl.classList.remove('hideElement');
-//         endQuizEl.classList.add('hideElement');
+        highscoreEl.classList.remove('hideElement');
+        endQuizEl.classList.add('hideElement');
 
-//         quizTakers.forEach(() => {
-//             leaders = document.createElement('li');
-//             leaders.innerText = quizTakers[userIndex].user
-//             usersListEl.appendChild(leaders);
-//             userIndex++;
+        quizTakers.forEach(() => {
+            leaders = document.createElement('li');
+            leaders.innerText = quizTakers[userIndex].user
+            usersListEl.appendChild(leaders);
+            userIndex++;
             
-//             leadersScores = document.createElement('li');
-//             leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
-//             leadersScoresEl.appendChild(leadersScores);
-//             highScoresIndex++;
-//         });
-//     };
+            leadersScores = document.createElement('li');
+            leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+            leadersScoresEl.appendChild(leadersScores);
+            highScoresIndex++;
+        });
+    };
 
-//     console.log(johnHancock);
-// };
-
- 
-
-
-// // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-// qScore.innerHTML = ('Score: ' + score);
+    console.log(johnHancock);
+};
 
 
 // <============================================ Adding Event Listeners. ================================================> //
 // Begin Quiz Button. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
 
+// Event Listener for option User chooses. //
 for (let i = 0; i < choices.length; i++) {
     
     choices[i].addEventListener('click', nextQuestion);
 
-}
-
-
+};
 
 // Redo Quiz Button. //
-// redoBtnEl.addEventListener('click', beginQuiz);
+redoBtnEl.addEventListener('click', beginQuiz);
 
-// // Higher Rank and Ego Button. //
-// topThemBtnEl.addEventListener('click', beginQuiz);
+// Higher Rank and Ego Button. //
+topThemBtnEl.addEventListener('click', beginQuiz);
 
-// // This event listener will allow the user to store their score and add their initials. //
-// totalEl.addEventListener('click', johnHancock);
+// This event listener will allow the user to store their score and add their initials. //
+totalEl.addEventListener('click', johnHancock);
 
-// // Ranking Scores. //
-// goToScoreboardEl.addEventListener('click', () => {
-//     instructEl.classList.add('hideElement');
-//     quizEl.classList.add('hideElement'); // I may not need this line of code. //
-//     endQuizEl.classList.add('hideElement');
-//     scoreContainerEl.classList.remove('hideElement');
+// Ranking Scores. //
+goToScoreboardEl.addEventListener('click', () => {
+    instructEl.classList.add('hideElement');
+    quizEl.classList.add('hideElement'); // I may not need this line of code. //
+    endQuizEl.classList.add('hideElement');
+    scoreContainerEl.classList.remove('hideElement');
 
-//     quizTakers.forEach(() => {
-//         leaders = document.createElement('li');
-//         leaders.innerText = quizTakers[userIndex].user
-//         usersListEl.appendChild(leaders);
-//         userIndex++;
+    quizTakers.forEach(() => {
+        leaders = document.createElement('li');
+        leaders.innerText = quizTakers[userIndex].user
+        usersListEl.appendChild(leaders);
+        userIndex++;
         
-//         leadersScores = document.createElement('li');
-//         leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
-//         leadersScoresEl.appendChild(leadersScores);
-//         highScoresIndex++;
-//     });
-// });
+        leadersScores = document.createElement('li');
+        leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+        leadersScoresEl.appendChild(leadersScores);
+        highScoresIndex++;
+    });
+});

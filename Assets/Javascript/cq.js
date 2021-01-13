@@ -14,13 +14,14 @@ const totalEl = document.getElementById('total');
 const signEl = document.getElementById('sign');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
 
-const choices = document.querySelectorAll('.choices');
 const leadersScoresEl = document.querySelector('#leadersScores');
 const usersListEl = document.querySelector('#usersList');
 const scoreContainerEl = document.querySelector('#scoreContainer');
+const choices = document.querySelectorAll('.choices');
 
+ 
 // Q & A: these are my quiz questions, answers (including correct options to select). //
-const questions = [{
+let questions = [{
     Q: "What's an instrument `'Fred'` plays?",
 
     choice1: "Trumpet",
@@ -211,6 +212,7 @@ function countdown() {
 
 // Function to render my Questions and Answers. //
 function getQnA() {
+    VerdictEl.classList.add('hideElement');
     let renderQnA = questions[QnAIndex];
     QEl.textContent = renderQnA.Q;
     choice1El.textContent = renderQnA.choice1;
@@ -219,6 +221,33 @@ function getQnA() {
     choice4El.textContent = renderQnA.choice4;
     choice5El.textContent = renderQnA.choice5; 
 };
+
+
+
+// Creating function to go the next question. //
+function nextQuestion() {
+
+    let dataNumber =  parseInt(this.getAttribute("data-number"));
+      console.log(dataNumber,questions[QnAIndex].A);
+
+      VerdictEl.classList.remove('hideElement');
+        if (dataNumber === questions[QnAIndex].A) {
+                          
+                correctEl.classList.remove('hideElement');
+          
+        } else{
+            
+            
+                incorrectEl.classList.remove('hideElement');
+        }
+   
+    QnAIndex++;
+    questions = questions.sort(()=> Math.random()-0.5);
+ 
+    setTimeout(getQnA, 10000)
+    
+   
+}
 
 
 // Function to randomize quesions. | This function appears to be working: DON'T TOUCH! //
@@ -258,102 +287,103 @@ function beginQuiz() {
 }; 
 
 
-// Sign Your Name! //
-function johnHancock() {
-    if (signEl.value < 1) {
+// Evaluation of User Choices. //
+// choices.forEach(choiceMade => {
+//     let number = choiceMade.dataset['number'];
+//     choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
+// });
+
+// choices.forEach(choiceMade => {
+//     choiceMade.addEventListener('click', event => {
+//         event.preventDefault();
+//         const userChoice = event.target.dataset.number;
+//         console.log(`Button pressed ${userChoice}`);
+
+//         if (userChoice == questions[randomIndex].A) {
+//             VerdictEl.classList.remove('hideElement');
+//             correctEl.classList.remove('hideElement');
+            
+//             // Rewards for scoring. //
+//             score += 2;
+//             timer += 3;
+            
+//             // Hold the press: was the user right, or WRAAAANG, LOL! //
+//             pause(() => {
+//                 VerdictEl.classList.add('hideElement');
+//                 correctEl.classList.add('hideElement');
+
+//                 console.log(pause);
+//             });
+
+//             randomIndex++;
+//             newQ(randomQ, randomIndex);
+//         } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
+//             VerdictEl.classList.remove('hideElement');
+//             incorrectEl.classList.remove('hideElement');
+
+//             // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
+//             score --;
+//             timer -= 3;
+            
+//             pause(() => {
+//                 VerdictEl.classList.add('hideElement');
+//                 incorrectEl.classList.add('hideElement');
+
+//                 console.log(pause);
+//             },
+            
+//             1000);
+//         }
+//     })    
+// });
+
+
+// // Sign Your Name! //
+// function johnHancock() {
+//     if (signEl.value < 1) {
         
-        return;
+//         return;
 
-    } else {
+//     } else {
 
-        qScore.textContent = score;
+//         qScore.textContent = score;
 
-        // Maybe... DEFINATELY NEED TO TEST. //
-        let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
-            user: signEl.value.toUpperCase(),
+//         // Maybe... DEFINATELY NEED TO TEST. //
+//         let scoreSubmittion = { // The user's final score being submitted to scoreboard. //
+//             user: signEl.value.toUpperCase(),
             
-            // The total score is adding var 'score + timer': this is the user's score + the time left. //
-            totalScore: score + timer,
-            }
+//             // The total score is adding var 'score + timer': this is the user's score + the time left. //
+//             totalScore: score + timer,
+//             }
 
-        winner.push(scoreSubmittion)
-        // Ordering local users (quiz takers on same device). //
-        winner.sort( (a,b) => b.totalScore - a.totalScore);
+//         winner.push(scoreSubmittion)
+//         // Ordering local users (quiz takers on same device). //
+//         winner.sort( (a,b) => b.totalScore - a.totalScore);
 
-        winner.splice(5);
+//         winner.splice(5);
 
-        localStorage.setItem('winner', JSON.stringify(winner));
+//         localStorage.setItem('winner', JSON.stringify(winner));
 
-        highscoreEl.classList.remove('hideElement');
-        endQuizEl.classList.add('hideElement');
+//         highscoreEl.classList.remove('hideElement');
+//         endQuizEl.classList.add('hideElement');
 
-        quizTakers.forEach(() => {
-            leaders = document.createElement('li');
-            leaders.innerText = quizTakers[userIndex].user
-            usersListEl.appendChild(leaders);
-            userIndex++;
+//         quizTakers.forEach(() => {
+//             leaders = document.createElement('li');
+//             leaders.innerText = quizTakers[userIndex].user
+//             usersListEl.appendChild(leaders);
+//             userIndex++;
             
-            leadersScores = document.createElement('li');
-            leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
-            leadersScoresEl.appendChild(leadersScores);
-            highScoresIndex++;
-        });
-    };
+//             leadersScores = document.createElement('li');
+//             leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+//             leadersScoresEl.appendChild(leadersScores);
+//             highScoresIndex++;
+//         });
+//     };
 
-    console.log(johnHancock);
-};
+//     console.log(johnHancock);
+// };
 
  
-// Evaluation of User Choices. //
-choices.forEach(choiceMade => {
-    let number = choiceMade.dataset['number'];
-    choiceMade.innerText = number + ' ' + qAsked[`choiceMade${number}`];
-});
-
-choices.forEach(choiceMade => {
-    choiceMade.addEventListener('click', event => {
-        event.preventDefault();
-        const userChoice = event.target.dataset.number;
-        console.log(`Button pressed ${userChoice}`);
-
-        if (userChoice == questions[randomIndex].A) {
-            VerdictEl.classList.remove('hideElement');
-            correctEl.classList.remove('hideElement');
-            
-            // Rewards for scoring. //
-            score += 2;
-            // score ++; //
-            timer += 3;
-            
-            // Hold the press: was the user right, or WRAAAANG, LOL! //
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                correctEl.classList.add('hideElement');
-
-                console.log(pause);
-            });
-
-            randomIndex++;
-            newQ(randomQ, randomIndex);
-        } else if (userChoice != questions[randomIndex].A) { // Needed to make conditional statement for incorrect answer. //
-            VerdictEl.classList.remove('hideElement');
-            incorrectEl.classList.remove('hideElement');
-
-            // What happens if they answer incorrectly: Lost of time- thought you knew me- WRAAANG, LOL! //
-            score --;
-            timer -= 3;
-            
-            pause(() => {
-                VerdictEl.classList.add('hideElement');
-                incorrectEl.classList.add('hideElement');
-
-                console.log(pause);
-            },
-            
-            1000);
-        }
-    })    
-});
 
 
 // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
@@ -364,31 +394,39 @@ choices.forEach(choiceMade => {
 // Begin Quiz Button. //
 introBtnEl.addEventListener('click', beginQuiz); // Once this button is selected, the quiz will begin. //
 
+for (let i = 0; i < choices.length; i++) {
+    
+    choices[i].addEventListener('click', nextQuestion);
+
+}
+
+
+
 // Redo Quiz Button. //
-redoBtnEl.addEventListener('click', beginQuiz);
+// redoBtnEl.addEventListener('click', beginQuiz);
 
-// Higher Rank and Ego Button. //
-topThemBtnEl.addEventListener('click', beginQuiz);
+// // Higher Rank and Ego Button. //
+// topThemBtnEl.addEventListener('click', beginQuiz);
 
-// This event listener will allow the user to store their score and add their initials. //
-totalEl.addEventListener('click', johnHancock);
+// // This event listener will allow the user to store their score and add their initials. //
+// totalEl.addEventListener('click', johnHancock);
 
-// Ranking Scores. //
-goToScoreboardEl.addEventListener('click', () => {
-    instructEl.classList.add('hideElement');
-    quizEl.classList.add('hideElement'); // I may not need this line of code. //
-    endQuizEl.classList.add('hideElement');
-    scoreContainerEl.classList.remove('hideElement');
+// // Ranking Scores. //
+// goToScoreboardEl.addEventListener('click', () => {
+//     instructEl.classList.add('hideElement');
+//     quizEl.classList.add('hideElement'); // I may not need this line of code. //
+//     endQuizEl.classList.add('hideElement');
+//     scoreContainerEl.classList.remove('hideElement');
 
-    quizTakers.forEach(() => {
-        leaders = document.createElement('li');
-        leaders.innerText = quizTakers[userIndex].user
-        usersListEl.appendChild(leaders);
-        userIndex++;
+//     quizTakers.forEach(() => {
+//         leaders = document.createElement('li');
+//         leaders.innerText = quizTakers[userIndex].user
+//         usersListEl.appendChild(leaders);
+//         userIndex++;
         
-        leadersScores = document.createElement('li');
-        leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
-        leadersScoresEl.appendChild(leadersScores);
-        highScoresIndex++;
-    });
-});
+//         leadersScores = document.createElement('li');
+//         leadersScores.innerText = quizTakers[highScoresIndex].totalScore;
+//         leadersScoresEl.appendChild(leadersScores);
+//         highScoresIndex++;
+//     });
+// });

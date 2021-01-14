@@ -268,7 +268,7 @@ function nextQuestion() {
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
  
-    setTimeout(getQnA, 10000)  
+    setTimeout(getQnA, 3500)  
 };
 
 

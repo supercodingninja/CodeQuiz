@@ -62,18 +62,24 @@
 
 
             <!-- Evaluation of user's answer. -->
-            <section id="Verdict" class="hideElement text-red">
-                <p id="correct" class="hideElement">Correct!</p>
+            <section id="Verdict" class="hideElement" text="red">
+                <div id="correctPic">
+                    <p id="correct" class="hideElement">Correct!</p>
+                </div>
 
-                <p id="incorrect" class="hideElement">What?! That is so, not Me!</p>
+                <div id="incorrectPic">
+                    <p id="incorrect" class="hideElement">What?! That is so, not Me!</p>
+                </div>
             </section>
 
 
             <!-- Buttons for End of quiz/Out of time -->
             <section id="endQuiz" class="hideElement">
                 <input type="text" id="sign" placeholder="Own it! Put your the initials to your `John Hancock,` here (first letters of First and Last name).">
-                <!-- <button id="total" class="ownIt">Submit Quiz Score</button>
-                <button id="redoBtn" class="ownIt" onclick="beginQuiz()">Shh! Redo...</button> -->
+                
+                <button id="total" class="ownIt">Submit Quiz Score</button>
+                
+                <button id="redoBtn" class="ownIt">Shh! Redo...</button>
             </section>
 
 

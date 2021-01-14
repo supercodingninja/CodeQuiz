@@ -2,14 +2,11 @@ body {
   background-image: url(../Media/seattle-background-640x415.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  color:rgb(221, 221, 221);
 }
 
-  .quizContainer {
-    align-items: center;
-    align-content: center;
-    text-align: center;
-  }
+.hideElement {
+  display: none;
+}
 
 h1 {
   /* Reference https://www.midwinter-dg.com/permalink-7-great-css-based-text-effects-using-the-text-shadow-property_2011-03-03.html */
@@ -17,7 +14,7 @@ h1 {
   color: rgba(255,255,255,0);
   font: 65px 'ChunkFiveRegular';
   float: right;
-  margin-top: 75px;
+  margin-top: 25px;
   margin-right: 167px;
 }
 
@@ -25,11 +22,12 @@ h1 {
 #instruct {
   top: 25px;
   left: 25px;
-  margin-top: 320px;
-  margin-right: 97px;
+  margin-top: 422px;
+  margin-right: 187px;
   text-align: center;
   color: rgb(221, 221, 221);
   font-size: 1em;
+  font-variant-caps: petite-caps, unicase;
 }
 
 .intro {
@@ -44,7 +42,6 @@ h1 {
   text-align: center;
   font-size: 2.5em;
   color: #ccc2a6;
-  margin-bottom: 22px;
   text-shadow: -2px 2.3px 0 #000;
   background-image: url(../Media/dykf.jpg);  background-repeat: no-repeat;
   border: 1px;
@@ -52,16 +49,17 @@ h1 {
   background-position: center; background-size: 100;
 }
 
-.hideElement {
-  display: none;
+.quizContainer {
+  align-items: center;
+  float: right;
+  text-align: center;
 }
 
 /* Quiz Container Styles. */
-/* Now, you see me- now, you don't!  Decided to use .attr "style: display: block !important;"  Ref. https://forum.jquery.com/topic/show-elements-with-style-display-none-important-jquery-bug */
 /* Q & A */
 #quiz {
-  margin-top: 320px;
-  margin-right: 350px;
+  margin-top: 170px;
+  margin-right: 100px;
   align-items: center;
   text-align: center;
   color: crimson;
@@ -85,12 +83,8 @@ h1 {
 
 /* Timer, Score, and High Score headers. */
 #quizHeader{
-  margin-top: 325px;
-  margin-right: 350px;
-  align-items: center;
+  margin: 5px;
   text-align: center;
-  color: crimson;
-  /* display: block !important; */
 }
 
 #goToScoreboard { /* Fred's Chaps */
@@ -111,12 +105,9 @@ h1 {
 }
 
 #quizTime { /* Timer */
-  margin-top: 350px;
-  margin-right: 350px;
-  align-items: center;
   text-align: center;
-  /* display: block !important; */
-  color: rgb(221, 221, 221);
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0);
   font-size: 1em;
 }
 
@@ -333,14 +324,17 @@ h1 {
 }
 
 #correct {
-  /* Use .attr for background-image: Assets/Media/choiceReactions_future project/really.jpg; */
   color: rgb(221, 221, 221);
   border-radius: 5px;
-  margin-top: 370px;
-  margin-right: 350px;
-  align-items: center;
+  margin: 2em;
   text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#correctPic {
   background-image: url('../Media/choiceReactions_future project/really.jpg');
+  align-items: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -350,13 +344,16 @@ h1 {
   /* Use .attr for background-image: Assets/Media/choiceReactions_future project/noWay.jpg; */
   color:rgb(221, 221, 221);
   border-radius: 5px;
-  margin-top: 370px;
-  margin-right: 350px;
-  align-items: center;
+  margin: 2em;
   text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#incorrectPic {
   background-image: url('../Media/choiceReactions_future project/noWay.jpg');
+  align-items: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
-

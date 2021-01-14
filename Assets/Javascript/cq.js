@@ -190,6 +190,17 @@ let randomIndex = 0;
 let userIndex = 0;
 
 
+// Initial Page Load. //
+instructEl.classList.remove('hideElement'); // Page's Indtruction. //
+quizEl.classList.add('hideElement'); // Page's Quiz. //
+quizHeaderEl.classList.add('hideElement'); // Highest Scores in Device + Timer + User's Score. //
+endQuizEl.classList.add('hideElement'); // Page' Score List. //
+totalEl.classList.add('hideElement'); // Submit Button. //
+redoBtnEl.classList.add('hideElement'); // Redo Button. //
+topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
+signEl.classList.add('hideElement'); // Form for user's initials. //
+
+
 // <=================================== Getting to the Functions' Definitions ===========================================> //
 // Function for Timer Countdown. //
 function countdown() { 
@@ -214,8 +225,11 @@ function countdown() {
 
 // Function to render my Questions and Answers. //
 function getQnA() {
+
     VerdictEl.classList.add('hideElement');
+    
     let renderQnA = questions[QnAIndex];
+    
     QEl.textContent = renderQnA.Q;
     choice1El.textContent = renderQnA.choice1;
     choice2El.textContent = renderQnA.choice2;
@@ -281,9 +295,12 @@ function newQ(randomQ, randomIndex) {
 function beginQuiz() {
     instructEl.classList.add('hideElement'); // Page's Indtruction. //
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
+    quizHeaderEl.classList.remove('hideElement'); // Highest Scores in Device + Timer + User's Score. //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
-    quizHeaderEl.classList.remove('hideElement'); // 
-    // DON'T FORGET to Call countdown timer. //
+    totalEl.classList.add('hideElement'); // Submit Button. //
+    redoBtnEl.classList.add('hideElement'); // Redo Button. //
+    topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
+    signEl.classList.add('hideElement'); // Form for user's initials. //
      
     // Calling my functions. //
     newQ(randomQ, randomIndex);

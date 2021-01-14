@@ -182,7 +182,7 @@ let qScore;
 let count; // Will define in function. //
 
 // These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
-let randomQ = questions.sort(() => Math.random() - .3);
+let randomQ = questions.sort(() => Math.random() - .5);
 let QnAIndex = 0;
 let qAsked;
 let randomIndex = 0;
@@ -267,7 +267,7 @@ function nextQuestion() {
     // qScore.innerHTML = ('Score: ' + score);
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
- 
+    timerCountdown.classList.remove('hideElement'); // Timer Only //
     setTimeout(getQnA, 3500)  
 };
 
@@ -276,6 +276,8 @@ function nextQuestion() {
 function newQ(randomQ, randomIndex) {
     
     // console.log(randomQ + "line-224"); | console.log(`${JSON.stringify(randomQ)} line-224`) //
+
+    timerCountdown.classList.remove('hideElement'); // Timer Only //
     
     if (randomIndex >= randomQ.length) { 
         resetTimer(count);
@@ -296,6 +298,7 @@ function beginQuiz() {
     instructEl.classList.add('hideElement'); // Page's Indtruction. //
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
     quizHeaderEl.classList.remove('hideElement'); // Highest Scores in Device + Timer + User's Score. //
+    timerCountdown.classList.remove('hideElement'); // Timer Only //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
     totalEl.classList.add('hideElement'); // Submit Button. //
     redoBtnEl.classList.add('hideElement'); // Redo Button. //

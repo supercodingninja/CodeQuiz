@@ -24,7 +24,7 @@ h1 {
   text-align: center;
 }
 
-/* <========================================= Page's Introduction. ======================================================> */
+/* <============================================ Page's Introduction. ===================================================> */
 #instruct {
   top: 25px;
   left: 25px;
@@ -55,26 +55,11 @@ h1 {
   background-position: center; background-size: 100;
 }
 
-/* <===================================================== Quiz ==========================================================> */
-/* Q & A */
+/* <==================================================== Quiz ===========================================================> */
 /* Timer, Score, and High Score headers. */
-#quizHeader{
+#quizHeader {
+  margin: 50px;
   align-items: center;
-  text-align: center;
-}
-
-#quiz {
-  margin-top: 177px;
-  margin-right: 100px;
-  align-items: center;
-  text-align: center;
-}
-
-#quizTime { /* Timer */
-  margin-top: 165px;
-  margin-right: 100px;
-  align-items: center;
-  text-align: center;
   text-align: center;
   color: #fff;
 	text-shadow: 0px -1px 4px rgb(255, 255, 255), 0px -2px 10px rgb(0, 255, 234), 0px -10px 20px #0084ff, 0px -18px 40px #006eff;
@@ -82,20 +67,40 @@ h1 {
   font-weight: bolder;
 }
 
-#qScore { /* User's Current Score */
+#quizTime { /* Timer */
+  margin-top: 52px;
+  margin-right: 100px;
+  align-items: center;
+  text-align: center;
+  /* color: #fff;
+	text-shadow: 0px -1px 4px rgb(255, 255, 255), 0px -2px 10px rgb(0, 255, 234), 0px -10px 20px #0084ff, 0px -18px 40px #006eff;
+	font: 80px 'BlackJackRegular';
+  font-weight: bolder; */
+}
+
+/* User's Current Score */
+/* #qScore {
   margin-top: 165px;
   margin-right: 105px;
+  align-items: center;
+  text-align: center;
+} */
+
+/* Q & A */
+#quiz {
+  margin-top: 200px;
+  margin-right: 100px;
   align-items: center;
   text-align: center;
 }
 
 #Q {
   text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0) /* rgb(221, 221, 221) */;
+  color: rgb(221, 221, 221); /* rgba(255,255,255,0) Hard to read questions.  I need to adjust text-shadow.*/
   background:linear-gradient(to bottom,rgba(255,255,255,0)  5%, #292b2e 100%);
   background:linear-gradient(to bottom, #292b2e 5%,  rgba(255,255,255,0) 100%);
   font-size: 55px;
-  margin-top: 200px;
+  margin-top: 205px;
   margin-right: 100px;
   align-items: center;
   text-align: center;

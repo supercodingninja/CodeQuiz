@@ -18,7 +18,13 @@ h1 {
   margin-right: 167px;
 }
 
-/* Page's Introduction. */
+.quizContainer {
+  align-items: center;
+  float: right;
+  text-align: center;
+}
+
+/* <========================================= Page's Introduction. ======================================================> */
 #instruct {
   top: 25px;
   left: 25px;
@@ -49,44 +55,57 @@ h1 {
   background-position: center; background-size: 100;
 }
 
-.quizContainer {
-  align-items: center;
-  float: right;
-  text-align: center;
-}
-
-/* Quiz Container Styles. */
+/* <===================================================== Quiz ==========================================================> */
 /* Q & A */
 #quiz {
   margin-top: 170px;
   margin-right: 100px;
   align-items: center;
   text-align: center;
-  color: crimson;
 }
 
 #Q {
-  margin-top: 350px;
-  margin-right: 350px;
+  margin-top: 200px;
+  margin-right: 100px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
 }
 
 #choiceSection {
-  margin-top: 360px;
-  margin-right: 350px;
+  margin-top: 210px;
+  margin-right: 100px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
 }
 
 /* Timer, Score, and High Score headers. */
 #quizHeader{
-  margin: 5px;
+  margin-top: 175px;
+  margin-right: 100px;
+  align-items: center;
   text-align: center;
 }
 
+#quizTime { /* Timer */
+  margin-top: 177px;
+  margin-right: 100px;
+  align-items: center;
+  text-align: center;
+  text-align: center;
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0);
+  font: 25px 'ChunkFiveRegular';
+  font-weight: bolder;
+}
+
+#qScore { /* User's Current Score */
+  margin-top: 350px;
+  margin-right: 350px;
+  align-items: center;
+  text-align: center;
+}
+
+ /* <========================================== End of Quiz & List of Scores. ===========================================> */
 #goToScoreboard { /* Fred's Chaps */
   cursor: context-menu;
   color: rgb(221, 221, 221);
@@ -94,7 +113,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   font-size: 1em;
   text-decoration: none;
 }
@@ -104,28 +122,12 @@ h1 {
   background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 }
 
-#quizTime { /* Timer */
-  text-align: center;
-  text-shadow: 0px 0px 10px rgba(255,255,255,0.6), 0px 0px 30px rgba(255,255,255,0.4), 0px 0px 50px rgba(255,255,255,0.3), 0px 0px 180px rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0);
-  font-size: 1em;
-}
-
-#qScore { /* User's Current Score */
-  margin-top: 350px;
-  margin-right: 350px;
-  align-items: center;
-  text-align: center;
-  /* display: block !important; */
-}
-
 #beat {
   width: 100%;
   margin-top: 350px;
   margin-right: 350px;
   align-items: center;
-  text-align: center;;
-  /* display: block !important; */
+  text-align: center;
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -137,7 +139,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
@@ -147,12 +148,11 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
 }
 
-/* Button Styles */
+/* <============================================= Button Styles =========================================================> */
 /* Ref. https://www.bestcssbuttongenerator.com/ */
 #knock {
 	box-shadow: 0px 1px 0px 0px #1c1b18;
@@ -217,7 +217,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   border: 5px groove silver;
 }
 
@@ -226,7 +225,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   box-shadow: 3px 4px 0px 0px #8a2a21;
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
 	background-color:#c62d1f;
@@ -251,7 +249,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   box-shadow: 3px 4px 0px 0px #19cf92;
 	background: linear-gradient(to bottom, #3847f0 5%, #21c2b5 100%);
 	background-color: #360580;
@@ -281,7 +278,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   width: 100%;
   justify-content: center;
 }
@@ -296,7 +292,6 @@ h1 {
   margin-right: 350px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
 	cursor: context-menu;
 	color: rgba(255,255,255,0);;
 	font-family: 'Dynalight', cursive;
@@ -317,7 +312,6 @@ h1 {
   margin-right: 370px;
   align-items: center;
   text-align: center;
-  /* display: block !important; */
   color: rgb(221, 221, 221);
   font-size: 1em;
   list-style-type: none;
@@ -341,7 +335,6 @@ h1 {
 }
 
 #incorrect {
-  /* Use .attr for background-image: Assets/Media/choiceReactions_future project/noWay.jpg; */
   color:rgb(221, 221, 221);
   border-radius: 5px;
   margin: 2em;

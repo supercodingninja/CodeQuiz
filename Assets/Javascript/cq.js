@@ -19,7 +19,15 @@ const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
 const leadersScoresEl = document.querySelector('#leadersScores');
 const usersListEl = document.querySelector('#usersList');
 const scoreContainerEl = document.querySelector('#scoreContainer');
-const choices = document.querySelectorAll('.choices'); 
+const choices = document.querySelectorAll('.choices');
+
+// Sounds Ref. https://www.youtube.com/watch?v=VlwSz2dXK_8; and http://www.developphp.com/video/JavaScript/Button-Sound-Effects-Tutorial-Audible-Menu-Systems; I needed a win.  This really helped. //
+var cheer = new Audio("Assets/Media/choiceReactions_future project/cheer2.mp3"); //Audio from https://www.partnersinrhyme.com/soundfx/applause.shtml //
+
+var boo = new Audio("Assets/Media/choiceReactions_future project/boo3.mp3"); //Audio from https://www.partnersinrhyme.com/soundfx/applause.shtml //
+
+cheer.playbackRate = 1.75;
+boo.playbackRate = 1.75;
 
 // Variables to created to help me render Questions and Options.  //
 var QEl = document.getElementById('Q');
@@ -275,11 +283,13 @@ function nextQuestion() {
       console.log(dataNumber, questions[QnAIndex].A);
 
       VerdictEl.classList.remove('hideElement');
-        if (dataNumber === questions[QnAIndex].A) {
+      
+        if (dataNumber === questions[QnAIndex].A) { // "(dataNumber === questions[QnAIndex].A)" Ref. Tutor on Peer Code Review: it is smaller than my function name{}; and it is much cleaner!  Thanks, Phil!  I need to remember this as I am correcting my errors. // 
             
             // Rewards for scoring. //
+            cheer.play();
             score += 5;
-            timer += 10;              
+            timer += 10; 
             correctEl.classList.remove('hideElement');
             incorrectEl.classList.add('hideElement');
         } 
@@ -287,6 +297,7 @@ function nextQuestion() {
         else {
             
             // Deductions for incorrect answer. //
+            boo.play();
             score -= 10;
             timer -= 25;
             incorrectEl.classList.remove('hideElement');

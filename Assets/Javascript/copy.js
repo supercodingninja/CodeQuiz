@@ -297,7 +297,7 @@ function nextQuestion() {
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
     timerCountdown.classList.remove('hideElement'); // Timer Only //
-    // setTimeout(getQnA, 1750)  
+    setTimeout(getQnA, 1750)  
 };
 
 

@@ -278,18 +278,19 @@ function nextQuestion() {
         if (dataNumber === questions[QnAIndex].A) {
             
             // Rewards for scoring. //
-            score += 2;
-            timer += 3;              
+            score += 5;
+            timer += 10;              
             correctEl.classList.remove('hideElement');
-          
+            incorrectEl.classList.add('hideElement');
         } 
         
         else {
             
             // Deductions for incorrect answer. //
-            score --;
-            timer -= 3;
+            score -= 10;
+            timer -= 25;
             incorrectEl.classList.remove('hideElement');
+            correctEl.classList.add('hideElement');
         }
    
     // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
@@ -297,7 +298,7 @@ function nextQuestion() {
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
     timerCountdown.classList.remove('hideElement'); // Timer Only //
-    setTimeout(getQnA, 3500)  
+    setTimeout(getQnA, 1750)  
 };
 
 
@@ -364,9 +365,11 @@ function johnHancock() {
 
         winner.push(scoreSubmittion)
         // Ordering local users (quiz takers on same device). //
+        
+        // I'm having trouble writing this arrow function.  I need to test this, also. //
         winner.sort( (a,b) => b.totalScore - a.totalScore);
 
-        winner.splice(5);
+        winner.splice(3);
 
         localStorage.setItem('winner', JSON.stringify(winner));
 

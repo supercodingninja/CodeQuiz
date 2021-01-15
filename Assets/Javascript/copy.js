@@ -29,7 +29,7 @@ var choice3El = document.getElementById('choice3');
 var choice4El = document.getElementById('choice4');
 var choice5El = document.getElementById('choice5');
 
-// Q & A: these are my quiz questions, answers (including correct options to select). //
+// Q & A: this is an array of objects; which the properties are my quiz questions, and various choices (including correct options as their own properties). //
 let questions = [
     // Begin objects. //
     {
@@ -278,8 +278,8 @@ function nextQuestion() {
         if (dataNumber === questions[QnAIndex].A) {
             
             // Rewards for scoring. //
-            score += 2;
-            timer += 3;              
+            score += 5;
+            timer += 10;              
             correctEl.classList.remove('hideElement');
           
         } 
@@ -287,17 +287,17 @@ function nextQuestion() {
         else {
             
             // Deductions for incorrect answer. //
-            score --;
-            timer -= 3;
+            score -2;
+            timer -= 5;
             incorrectEl.classList.remove('hideElement');
         }
    
     // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-    // qScore.innerHTML = ('Score: ' + score);
+    qScore.innerHTML = ('Score: ' + score);
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
     timerCountdown.classList.remove('hideElement'); // Timer Only //
-    setTimeout(getQnA, 3500)  
+    // setTimeout(getQnA, 1750)  
 };
 
 

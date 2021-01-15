@@ -8,6 +8,8 @@ const timerCountdown = document.getElementById('quizTime');
 const quizHeaderEl = document.getElementById('quizHeader');
 const VerdictEl = document.getElementById('Verdict');
 const correctEl = document.getElementById('correct');
+const MakeItEl = document.getElementById('MakeIt');
+const whyEl = document.getElementById('why');
 const incorrectEl = document.getElementById('incorrect');
 const endQuizEl = document.getElementById('endQuiz');
 const totalEl = document.getElementById('total');
@@ -26,8 +28,8 @@ var cheer = new Audio("Assets/Media/choiceReactions_future project/cheer2.mp3");
 
 var boo = new Audio("Assets/Media/choiceReactions_future project/boo3.mp3"); //Audio from https://www.partnersinrhyme.com/soundfx/applause.shtml //
 
-cheer.playbackRate = 1.75;
-boo.playbackRate = 1.75;
+cheer.playbackRate = 1.775;
+boo.playbackRate = 1.775;
 
 // Variables to created to help me render Questions and Options.  //
 var QEl = document.getElementById('Q');
@@ -117,7 +119,7 @@ let questions = [
 
         choice1: "Fred was a devout = muslim, since he served in the wars.  He met his wife in Baharain, while detached to a U. S. Naval base; and was converted to Christianity, when his father-in-law gave him a choice, 'Your religion, or my daughter.'",
         choice2: "Fred believes in = Christianity, Judaism, and Muslim (all from father Abraham).",
-        choice3: "`'Frederick's Faith is'` === Christianity.",
+        choice3: "'Frederick's Faith is' === Christianity.",
         choice4: "Frederick is an !== atheist.",
         choice5: "Frederick is a !== budhist.",
 
@@ -140,7 +142,7 @@ let questions = [
         Q: "What is 'Fred's' favorite = show?",
 
         choice1: "'The Mandolorian' = show",
-        choice2: "show = `'Star Wars: The Clone Wars'`",
+        choice2: "show = 'Star Wars: The Clone Wars'",
         choice3: "Game of Horns = yes",
         choice4: "You've asked this question = show",
         choice5: "Power Rangers! = show",
@@ -291,17 +293,21 @@ function nextQuestion() {
             score += 5;
             timer += 10; 
             correctEl.classList.remove('hideElement');
+            MakeItEl.classList.remove('hideElement');
             incorrectEl.classList.add('hideElement');
+            whyEl.classList.add('hideElement');
         } 
         
         else {
             
             // Deductions for incorrect answer. //
+            correctEl.classList.add('hideElement');
+            MakeItEl.classList.add('hideElement');
+            whyEl.classList.remove('hideElement');
+            incorrectEl.classList.remove('hideElement');
             boo.play();
             score -= 10;
             timer -= 25;
-            incorrectEl.classList.remove('hideElement');
-            correctEl.classList.add('hideElement');
         }
    
     // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
@@ -309,7 +315,7 @@ function nextQuestion() {
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
     timerCountdown.classList.remove('hideElement'); // Timer Only //
-    setTimeout(getQnA, 1750)  
+    setTimeout(getQnA, 3000)  
 };
 
 

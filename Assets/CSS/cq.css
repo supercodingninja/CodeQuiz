@@ -1,5 +1,5 @@
 body {
-  background-image: url(../Media/seattle-background-640x415.jpg);
+  background-image: url(../Media/backgrounds/seattle-background-640x415.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -329,16 +329,15 @@ h1 {
 }
 
 #correct {
-  color: rgb(221, 221, 221);
-  border-radius: 5px;
-  margin: 2em;
+  text-shadow: 2px 1px 10px rgba(255,255,255,0), 3px 4px 30px rgba(221, 221, 221), 5px 6px 50px #19cf92, 7px 8px 180px #21c2b5, 9px 10px 150px #21548a;
+  color: #3d5a7a;   
   text-align: center;
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: bolder;
+  font-size: 85px;
 }
 
 #correctPic {
-  background-image: url('../Media/choiceReactions_future project/really.jpg');
+  background-image: url('../Media/choiceReactions_future project/correct.jpg');
   align-items: center;
   background-repeat: no-repeat;
   background-size: contain;

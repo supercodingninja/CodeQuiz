@@ -28,8 +28,8 @@ h1 {
 #instruct {
   top: 25px;
   left: 25px;
-  margin-top: 422px;
-  margin-right: 187px;
+  margin-top: 322px;
+  margin-right: 150px;
   text-align: center;
   color: rgb(221, 221, 221);
   font-size: 1em;
@@ -142,6 +142,7 @@ h1 {
 
 #endQuiz {
   display: flex;
+  flex-direction: row;
   max-width: 100%;
   margin-top: 350px;
   margin-right: 350px;
@@ -269,7 +270,8 @@ h1 {
 	cursor: context-menu;
 	color: rgba(255,255,255,0);
 	font-family: 'Dynalight', cursive;
-	font-size: 17px;
+  font-size: 30px;
+  font-weight: 700;
 	padding: 7px 25px;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #3847f0;

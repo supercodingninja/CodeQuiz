@@ -5,6 +5,8 @@ const redoBtnEl = document.getElementById('redoBtn'); //JUST CALL FUNCTION BEGIN
 const topThemBtnEl = document.getElementById('top'); //JUST CALL FUNCTION BEGINQUIZ(); //
 const quizEl = document.getElementById('quiz');
 const timerCountdown = document.getElementById('quizTime');
+const qScoreEl = document.getElementById('qScore');
+const tScoreEl = document.getElementById('tScore');
 const quizHeaderEl = document.getElementById('quizHeader');
 const VerdictEl = document.getElementById('Verdict');
 const correctEl = document.getElementById('correct');
@@ -217,7 +219,8 @@ let quizTakers = [ ];
 let highScoresIndex = 0;
 let timer = 300;
 let timerID;
-let qScore;
+let qScore = score;
+
 let count; // Will define in function. //
 
 // These variables are created, in order to help me automatically randomize my array of questions. This will make the quiz more challenging, for those retaking the quiz (for higher score, or for competition with other users on same local machine being use (this is a static page, although I am trying to make a feel of dynamics, as much as possible). //
@@ -230,7 +233,9 @@ let userIndex = 0;
 
 
 // Initial Page Load. //
-instructEl.classList.remove('hideElement'); // Page's Indtruction. //
+instructEl.classList.remove('hideElement'); // Page's Introduction. //
+qScoreEl.classList.add('hideElement'); // User's Current Score Quiz. //
+tScoreEl.classList.add('hideElement'); // User's Current Score Quiz. //
 quizEl.classList.add('hideElement'); // Page's Quiz. //
 quizHeaderEl.classList.add('hideElement'); // Highest Scores in Device + Timer + User's Score. //
 endQuizEl.classList.add('hideElement'); // Page' Score List. //
@@ -244,16 +249,21 @@ signEl.classList.add('hideElement'); // Form for user's initials. //
 // Function for Timer Countdown. //
 function countdown() { 
     timer -- ;
+
+    // Appending the User's Timer & Current Score. //
     quizHeaderEl.textContent = 'Timer: ' + timer;
+    qScoreEl.textContent = 'Score: ' + score;
 
     if (timer <= 0) {
-        instructEl.classList.add('hideElement'); // Page's Indtruction. //
+        instructEl.classList.add('hideElement'); // Page's Introduction. //
       
-        endQuizEl.classList.add('hideElement'); // Page' Score List. //
+        endQuizEl.classList.remove('hideElement'); // Page' Score List. //
 
         quizHeaderEl.remove('hideElement'); // Page's Quiz. //
        
         clearInterval(timerID);
+
+        endQuiz();
         
         console.log(timer);
     };
@@ -275,6 +285,51 @@ function getQnA() {
     choice3El.textContent = renderQnA.choice3;
     choice4El.textContent = renderQnA.choice4;
     choice5El.textContent = renderQnA.choice5; 
+};
+
+
+// Function to randomize quesions. | This function appears to be working: DON'T TOUCH! //
+function newQ(randomQ, randomIndex) {
+    
+    // console.log(randomQ + "line-224"); | console.log(`${JSON.stringify(randomQ)} line-224`) //
+
+    timerCountdown.classList.remove('hideElement'); // Timer Only //
+    qScoreEl.classList.remove('hideElement'); // User's Current Score. //
+    
+    if (randomIndex >= randomQ.length) { 
+        resetTimer(count);
+
+        return;
+    };
+
+    let qAsked = randomQ[randomIndex];
+    
+    QEl.innerText = qAsked.Q;
+    
+    console.log(newQ);
+};
+
+
+// Function to start my quiz. //
+function beginQuiz() {
+    instructEl.classList.add('hideElement'); // Page's Introduction. //
+    quizEl.classList.remove('hideElement'); // Page's Quiz. //
+    quizHeaderEl.classList.remove('hideElement'); // Highest Scores in Device + Timer + User's Score. //
+    timerCountdown.classList.remove('hideElement'); // Timer Only ///
+    qScoreEl.classList.remove('hideElement'); // User's Current Score Quiz. //
+    endQuizEl.classList.add('hideElement'); // Page' Score List. //
+    totalEl.classList.add('hideElement'); // Submit Button. //
+    redoBtnEl.classList.add('hideElement'); // Redo Button. //
+    topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
+    signEl.classList.add('hideElement'); // Form for user's initials. //
+     
+    // Calling my functions. //
+    newQ(randomQ, randomIndex);
+    getQnA();
+
+    timerID = setInterval(countdown ,1000);
+
+    console.log(beginQuiz);
 };
 
 
@@ -310,55 +365,27 @@ function nextQuestion() {
             timer -= 25;
         }
    
-    // // Appending the Quiz Taker's Score. DEFINATELY NEED TO TEST. //
-    // qScore.innerHTML = ('Score: ' + score);
     QnAIndex++;
     questions = questions.sort(()=> Math.random()-0.5);
     timerCountdown.classList.remove('hideElement'); // Timer Only //
+    qScoreEl.classList.remove('hideElement'); // User's Current Score, Only //
+    qScoreEl.textContent = 'Score: ' + score;
+    
     setTimeout(getQnA, 3000)  
 };
 
 
-// Function to randomize quesions. | This function appears to be working: DON'T TOUCH! //
-function newQ(randomQ, randomIndex) {
+// Function to end my quiz. //
+function endQuiz() {
+    quizEl.classList.add('hideElement'); // Page's Quiz. //
+    quizHeaderEl.classList.add('hideElement'); // Highest Scores in Device + Timer + User's Score. //
+    timerCountdown.classList.add('hideElement'); // Timer Only //
+    endQuizEl.classList.remove('hideElement'); // Page' Score List. //
+    totalEl.classList.remove('hideElement'); // Submit Button. //
+    redoBtnEl.classList.remove('hideElement'); // Redo Button. //
+    signEl.classList.remove('hideElement'); // Form for user's initials. //
     
-    // console.log(randomQ + "line-224"); | console.log(`${JSON.stringify(randomQ)} line-224`) //
-
-    timerCountdown.classList.remove('hideElement'); // Timer Only //
-    
-    if (randomIndex >= randomQ.length) { 
-        resetTimer(count);
-
-        return;
-    };
-
-    let qAsked = randomQ[randomIndex];
-    
-    QEl.innerText = qAsked.Q;
-    
-    console.log(newQ);
-};
-
-
-// Function to start my quiz. //
-function beginQuiz() {
-    instructEl.classList.add('hideElement'); // Page's Indtruction. //
-    quizEl.classList.remove('hideElement'); // Page's Quiz. //
-    quizHeaderEl.classList.remove('hideElement'); // Highest Scores in Device + Timer + User's Score. //
-    timerCountdown.classList.remove('hideElement'); // Timer Only //
-    endQuizEl.classList.add('hideElement'); // Page' Score List. //
-    totalEl.classList.add('hideElement'); // Submit Button. //
-    redoBtnEl.classList.add('hideElement'); // Redo Button. //
-    topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
-    signEl.classList.add('hideElement'); // Form for user's initials. //
-     
-    // Calling my functions. //
-    newQ(randomQ, randomIndex);
-    getQnA();
-
-    timerID = setInterval(countdown ,1000);
-
-    console.log(beginQuiz);
+    console.log(endQuiz);
 }; 
 
 

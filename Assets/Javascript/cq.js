@@ -393,7 +393,8 @@ function endQuiz() {
 // Sign Your Name! //
 function JOHNHANCOCK() {
 
-    if (submitEl.document.getElementById('submit').onsubmit) {
+    // if (submitEl.document.getElementById('submit').onsubmit) {
+    if (submitEl, 'click') {
 
         signEl.document.getElementById('sign').value;
         signEl.setAttribute('type', 'submit');
@@ -440,7 +441,7 @@ function JOHNHANCOCK() {
             highScoresIndex++;
         });
 
-    } else if (redoBtnEl.document.getElementById('submit').onsubmit) {
+    } else if (redoBtnEl.document.getElementById('redoBtn').onclick) {
 
     beginQuiz();
 

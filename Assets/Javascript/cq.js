@@ -16,7 +16,6 @@ const incorrectEl = document.getElementById('incorrect');
 const endQuizEl = document.getElementById('endQuiz');
 const submitEl = document.getElementById('submit');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
-let signEl = document.getElementById('sign');
 
 const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
 
@@ -30,8 +29,13 @@ var cheer = new Audio("Assets/Media/choiceReactions_future project/cheer2.mp3");
 
 var boo = new Audio("Assets/Media/choiceReactions_future project/boo3.mp3"); //Audio from https://www.partnersinrhyme.com/soundfx/applause.shtml //
 
+var alarm = new Audio("Assets/Media/choiceReactions_future project/Door_entry_notification-Loge_the_60th-95203129.mp3"); // Audio from https://soundbible.com/1758-Door-Entry-Notification.html //
+
 cheer.playbackRate = 1.775;
 boo.playbackRate = 1.775;
+alarm.playbackRate = 1.20;
+
+var signEl = document.getElementById('sign');
 
 // Variables to created to help me render Questions and Options.  //
 var QEl = document.getElementById('Q');
@@ -312,6 +316,7 @@ function newQ(randomQ, randomIndex) {
 
 // Function to start my quiz. //
 function beginQuiz() {
+    alarm.play();
     instructEl.classList.add('hideElement'); // Page's Introduction. //
     quizEl.classList.remove('hideElement'); // Page's Quiz. //
     quizHeaderEl.classList.remove('hideElement'); // Highest Scores in Device + Timer + User's Score. //
@@ -444,6 +449,9 @@ function JOHNHANCOCK() {
     } else if (redoBtnEl.document.getElementById('redoBtn').onclick) {
 
     beginQuiz();
+    countdown();
+    nextQuestion();
+    endQuiz();
 
     submitEl.classList.add('hideElement'); // Submit Button. //
     redoBtnEl.classList.add('hideElement'); // Redo Button. //

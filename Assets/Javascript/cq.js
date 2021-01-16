@@ -14,9 +14,9 @@ const MakeItEl = document.getElementById('MakeIt');
 const whyEl = document.getElementById('why');
 const incorrectEl = document.getElementById('incorrect');
 const endQuizEl = document.getElementById('endQuiz');
-const totalEl = document.getElementById('total');
-const signEl = document.getElementById('sign');
+const submitEl = document.getElementById('submit');
 const goToScoreboardEl = document.getElementById('goToScoreboard');
+let signEl = document.getElementById('sign');
 
 const winner =  JSON.parse(localStorage.getItem('winner')) || [ ];
 
@@ -239,7 +239,7 @@ tScoreEl.classList.add('hideElement'); // User's Current Score Quiz. //
 quizEl.classList.add('hideElement'); // Page's Quiz. //
 quizHeaderEl.classList.add('hideElement'); // Highest Scores in Device + Timer + User's Score. //
 endQuizEl.classList.add('hideElement'); // Page' Score List. //
-totalEl.classList.add('hideElement'); // Submit Button. //
+submitEl.classList.add('hideElement'); // Submit Button. //
 redoBtnEl.classList.add('hideElement'); // Redo Button. //
 topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
 signEl.classList.add('hideElement'); // Form for user's initials. //
@@ -318,7 +318,7 @@ function beginQuiz() {
     timerCountdown.classList.remove('hideElement'); // Timer Only ///
     qScoreEl.classList.remove('hideElement'); // User's Current Score Quiz. //
     endQuizEl.classList.add('hideElement'); // Page' Score List. //
-    totalEl.classList.add('hideElement'); // Submit Button. //
+    submitEl.classList.add('hideElement'); // Submit Button. //
     redoBtnEl.classList.add('hideElement'); // Redo Button. //
     topThemBtnEl.classList.add('hideElement'); // Redo Button (Ego and Rank). //
     signEl.classList.add('hideElement'); // Form for user's initials. //
@@ -370,7 +370,7 @@ function nextQuestion() {
     timerCountdown.classList.remove('hideElement'); // Timer Only //
     qScoreEl.classList.remove('hideElement'); // User's Current Score, Only //
     qScoreEl.textContent = 'Score: ' + score;
-    
+
     setTimeout(getQnA, 3000)  
 };
 
@@ -381,7 +381,7 @@ function endQuiz() {
     quizHeaderEl.classList.add('hideElement'); // Highest Scores in Device + Timer + User's Score. //
     timerCountdown.classList.add('hideElement'); // Timer Only //
     endQuizEl.classList.remove('hideElement'); // Page' Score List. //
-    totalEl.classList.remove('hideElement'); // Submit Button. //
+    submitEl.classList.remove('hideElement'); // Submit Button. //
     redoBtnEl.classList.remove('hideElement'); // Redo Button. //
     signEl.classList.remove('hideElement'); // Form for user's initials. //
     
@@ -389,14 +389,22 @@ function endQuiz() {
 }; 
 
 
+// I am having trouble with this section.  I had so many forms of thought flow.  I need to submit this; and come back to it, later. //
 // Sign Your Name! //
-function johnHancock() {
-    if (signEl.value < 1) {
+function JOHNHANCOCK() {
+
+    if (submitEl.document.getElementById('submit').onsubmit) {
+
+        signEl.document.getElementById('sign').value;
+        signEl.setAttribute('type', 'submit');
         
-        return;
+        topThemBtnEl.classList.remove('hideElement'); // Appealing to the user's ego: another chance to retake quiz, for a higher score. //
+        goToScoreboardEl.classList.remove('hideElement'); // Quiz takers' in ranking order. //
+        submitEl.classList.add('hideElement'); // Submit Button. //
+        redoBtnEl.classList.add('hideElement'); // Redo Button. //
+        signEl.classList.add('hideElement'); // Form for user's initials. //
 
-    } else {
-
+        
         qScore.textContent = score;
 
         // Maybe... DEFINATELY NEED TO TEST. //
@@ -431,9 +439,15 @@ function johnHancock() {
             leadersScoresEl.appendChild(leadersScores);
             highScoresIndex++;
         });
-    };
 
-    console.log(johnHancock);
+    } else if (redoBtnEl, 'click') {
+
+    beginQuiz();
+
+    submitEl.classList.add('hideElement'); // Submit Button. //
+    redoBtnEl.classList.add('hideElement'); // Redo Button. //
+
+    console.log(JOHNHANCOCK);
 };
 
 
@@ -451,11 +465,14 @@ for (let i = 0; i < choices.length; i++) {
 // Redo Quiz Button. //
 redoBtnEl.addEventListener('click', beginQuiz);
 
+// Submit Button. //
+signEl.addEventListener('click', JOHNHANCOCK);
+
 // Higher Rank and Ego Button. //
 topThemBtnEl.addEventListener('click', beginQuiz);
 
 // This event listener will allow the user to store their score and add their initials. //
-totalEl.addEventListener('click', johnHancock);
+submitEl.addEventListener('click', JOHNHANCOCK);
 
 // Ranking Scores. //
 goToScoreboardEl.addEventListener('click', () => {

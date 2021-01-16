@@ -69,7 +69,7 @@ Remember this also, as a developer, your goal should be designing experiences th
 #### Styling This Application ![CSS Power]((Assets/Media/screenshots/CSSpower/CSS3.png);(Assets/Media/screenshots/CSSpower/CSS3_2.png;Assets/Media/screenshots/CSSpower/CSS3_3.png;Assets/Media/screenshots/CSSpower/CSS3_4.png;Assets/Media/screenshots/CSSpower/CSS3_5.png;Assets/Media/screenshots/CSSpower/CSS3_6.png))
 #### Application Markup ![Views]((Assets/Media/screenshots/html5Code/doc.png;Assets/Media/screenshots/html5Code/doc2.png;Assets/Media/screenshots/html5Code/doc3.png))
 #### Troubleshooting This Application ![Views](TBD...)
-#### The Power Behind This Application ![Code](TBD...)
+#### The Power Behind This Application ![Code]((Assets/Media/screenshots/JSpower/JS.png;Assets/Media/screenshots/JSpower/JS2.png;Assets/Media/screenshots/JSpower/JS3.png;Assets/Media/screenshots/JSpower/JS4.png;Assets/Media/screenshots/JSpower/JS5.png))
 #### TBD... ![TBD...](TBD...)
 
 ### HTML

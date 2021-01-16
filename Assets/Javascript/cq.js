@@ -440,7 +440,7 @@ function JOHNHANCOCK() {
             highScoresIndex++;
         });
 
-    } else if (redoBtnEl, 'click') {
+    } else if (redoBtnEl.document.getElementById('submit').onsubmit) {
 
     beginQuiz();
 
@@ -448,6 +448,8 @@ function JOHNHANCOCK() {
     redoBtnEl.classList.add('hideElement'); // Redo Button. //
 
     console.log(JOHNHANCOCK);
+    };
+
 };
 
 
